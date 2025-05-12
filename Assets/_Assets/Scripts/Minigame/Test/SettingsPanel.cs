@@ -1,11 +1,13 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class SettingsPanel : MonoBehaviour
 {
-    [SerializeField] private SkillCheckData _data;
+    [FormerlySerializedAs("_data")] [SerializeField]
+    private MinigameSettings _settings;
 
     [SerializeField] private Slider _speedSlider;
     [SerializeField] private Slider _targetAreaSlider;
@@ -16,26 +18,26 @@ public class SettingsPanel : MonoBehaviour
     [SerializeField] private Slider _amountSlider;
     [SerializeField] private Slider _durationSlider;
     [SerializeField] private Toggle _overtimeToggle;
-    
-    
+
+
     private void Start()
     {
-        _data = new SkillCheckData();
-        
-        _speedSlider.onValueChanged.AddListener((v) => { _data.Speed = v;});
-        _targetAreaSlider.onValueChanged.AddListener((v) => { _data.TargetAreaSize = v;});
-        _cSuccessSlider.onValueChanged.AddListener((v) => { _data.CriticalSuccessProgress = Mathf.RoundToInt(v);});
-        _successSlider.onValueChanged.AddListener((v) => { _data.SuccessProgress = Mathf.RoundToInt(v);});
-        _failSlider.onValueChanged.AddListener((v) => { _data.FailureProgress = Mathf.RoundToInt(v);});
-        _rateSlider.onValueChanged.AddListener((v) => { _data.DecreaseTimer = v;});
-        _amountSlider.onValueChanged.AddListener((v) => { _data.DecreaseAmount = Mathf.RoundToInt(v);});
-        _durationSlider.onValueChanged.AddListener((v) => { _data.Duration = v;});
-        _overtimeToggle.onValueChanged.AddListener((v) => { _data.DecreaseProgressOvertime = v;});
+        _settings = new MinigameSettings();
+
+        _speedSlider.onValueChanged.AddListener((v) => { _settings.Speed = v; });
+        _targetAreaSlider.onValueChanged.AddListener((v) => { _settings.TargetAreaSize = v; });
+        _cSuccessSlider.onValueChanged.AddListener((v) => { _settings.CriticalSuccessProgress = Mathf.RoundToInt(v); });
+        _successSlider.onValueChanged.AddListener((v) => { _settings.SuccessProgress = Mathf.RoundToInt(v); });
+        _failSlider.onValueChanged.AddListener((v) => { _settings.FailureProgress = Mathf.RoundToInt(v); });
+        _rateSlider.onValueChanged.AddListener((v) => { _settings.DecreaseTimer = v; });
+        _amountSlider.onValueChanged.AddListener((v) => { _settings.DecreaseAmount = Mathf.RoundToInt(v); });
+        _durationSlider.onValueChanged.AddListener((v) => { _settings.Duration = v; });
+        _overtimeToggle.onValueChanged.AddListener((v) => { _settings.DecreaseProgressOvertime = v; });
     }
 
     public void UseDefaultSettings()
     {
-        SkillCheckData data = new SkillCheckData
+        MinigameSettings settings = new MinigameSettings
         {
             Speed = 5f,
             TargetAreaSize = 20,
@@ -48,48 +50,28 @@ public class SettingsPanel : MonoBehaviour
             Duration = 20f
         };
 
-        _speedSlider.value = data.Speed;
-        _targetAreaSlider.value = data.TargetAreaSize;
-        _cSuccessSlider.value = data.CriticalSuccessProgress;
-        _successSlider.value = data.SuccessProgress;
-        _failSlider.value = data.FailureProgress;
-        _rateSlider.value = data.DecreaseTimer;
-        _amountSlider.value = data.DecreaseAmount;
-        _durationSlider.value = data.Duration;
-        _overtimeToggle.isOn = data.DecreaseProgressOvertime;
+        _speedSlider.value = settings.Speed;
+        _targetAreaSlider.value = settings.TargetAreaSize;
+        _cSuccessSlider.value = settings.CriticalSuccessProgress;
+        _successSlider.value = settings.SuccessProgress;
+        _failSlider.value = settings.FailureProgress;
+        _rateSlider.value = settings.DecreaseTimer;
+        _amountSlider.value = settings.DecreaseAmount;
+        _durationSlider.value = settings.Duration;
+        _overtimeToggle.isOn = settings.DecreaseProgressOvertime;
 
-        _data = data;
+        _settings = settings;
     }
 
-    public void StartSkillCheck(int index)
+    public void StartMinigame(int index, MinigameType type)
     {
-        SkillCheckType type = SkillCheckType.BAR;
-        
-        switch (index)
-        {
-            case 0:
-                break;
-            case 1:
-                type = SkillCheckType.KEY;
-                break;
-            case 2:
-                type = SkillCheckType.CIRCLE;
-                break;
-            default:
-                break;
-        }
+        _settings.Type = type;
         EventSystem.current.SetSelectedGameObject(null);
-        SkillCheckManager.Instance.StartNewSkillCheck(type, _data, OnComplete, OnFail);
+        MinigameManager.s_Instance.StartNewMinigame(_settings, OnComplete);
     }
 
-
-    private void OnComplete()
+    private void OnComplete(MinigameResult result)
     {
-        //Fazer alguma coisa quando completar o minigame
-    }
-
-    private void OnFail()
-    {
-        //Fazer alguma coisa quando falhar o minigame
+        
     }
 }

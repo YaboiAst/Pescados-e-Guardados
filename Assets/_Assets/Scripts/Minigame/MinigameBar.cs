@@ -1,9 +1,10 @@
+using System;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class SkillCheckBar : SkillCheck
+public class MinigameBar : Minigame
 {
     [SerializeField] private RectTransform _pointer;
     [SerializeField] private RectTransform _targetArea;
@@ -15,7 +16,7 @@ public class SkillCheckBar : SkillCheck
     [Button]
     public void StartButton()
     {
-        SkillCheckData data = new SkillCheckData
+        MinigameSettings settings = new MinigameSettings
         {
             Speed = 5f,
             TargetAreaSize = 20,
@@ -27,12 +28,12 @@ public class SkillCheckBar : SkillCheck
             DecreaseTimer = 0f,
             Duration = 20f
         };
-        StartSkillCheck(data);
+        StartMinigame(settings, null);
     }
 
-    public override void StartSkillCheck(SkillCheckData data)
+    public override void StartMinigame(MinigameSettings settings, Action<MinigameResult> completeMinigame)
     {
-        base.StartSkillCheck(data);
+        base.StartMinigame(settings, completeMinigame);
         _speed *= 100;
         _targetArea.DOScaleX(1, 0.2f);
         GenerateNewTargetArea(false);
@@ -108,23 +109,23 @@ public class SkillCheckBar : SkillCheck
         }
     }
 
-    protected override void CompleteSkillCheck()
+    protected override void CompleteMinigame()
     {
         _pointer.DOAnchorPosX(0, 0.2f).SetEase(Ease.OutQuint);
         _targetArea.DOScaleX(0, 0.2f);
 
-        base.CompleteSkillCheck();
+        base.CompleteMinigame();
     }
 
-    protected override void FailSkillCheck()
+    protected override void FailMinigame()
     {
         _pointer.DOAnchorPosX(0, 0.2f).SetEase(Ease.OutQuint);
         _targetArea.DOScaleX(0, 0.2f);
         
-        base.FailSkillCheck();
+        base.FailMinigame();
     }
 
-    protected override void ResetSkillCheck()
+    protected override void ResetMinigame()
     {
         _pointer.localPosition = new Vector2(0, _pointer.localPosition.y);
         _targetArea.localScale = new Vector2(0, _targetArea.localScale.y);

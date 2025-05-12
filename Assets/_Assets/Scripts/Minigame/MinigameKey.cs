@@ -1,9 +1,11 @@
+using System;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
-public class SkillCheckKey : SkillCheck
+public class MinigameKey : Minigame
 {
     [SerializeField] private RectTransform _pointer;
     [SerializeField] private Image _targetArea;
@@ -18,7 +20,7 @@ public class SkillCheckKey : SkillCheck
     [Button]
     public void StartButton()
     {
-        SkillCheckData data = new SkillCheckData
+        MinigameSettings settings = new MinigameSettings
         {
             Speed = 5f,
             TargetAreaSize = 20,
@@ -31,12 +33,12 @@ public class SkillCheckKey : SkillCheck
             Duration = 20f
         };
         
-        StartSkillCheck(data);
+        StartMinigame(settings, null);
     }
     
-    public override void StartSkillCheck(SkillCheckData data)
+    public override void StartMinigame(MinigameSettings settings, Action<MinigameResult> completeMinigame)
     {
-        base.StartSkillCheck(data);
+        base.StartMinigame(settings, completeMinigame);
         _speed *= 50f;
         _targetAreaSize *= 1.8f;
         GenerateNewTargetArea();
@@ -112,31 +114,31 @@ public class SkillCheckKey : SkillCheck
         }
     }
 
-    protected override void CompleteSkillCheck()
+    protected override void CompleteMinigame()
     {
         _currentAngle = 0;
         _pointer.DORotate(Vector3.zero, 0.2f).SetEase(Ease.OutQuint);
         _targetArea.DOFillAmount(0, 0.2f);
         _criticalTargetArea.DOFillAmount(0, 0.2f);
-        base.CompleteSkillCheck();
+        base.CompleteMinigame();
     }
 
-    protected override void FailSkillCheck()
+    protected override void FailMinigame()
     {
         _currentAngle = 0f;
         _pointer.DORotate(Vector3.zero, 0.2f).SetEase(Ease.OutQuint);
         _targetArea.DOFillAmount(0, 0.2f);
         _criticalTargetArea.DOFillAmount(0, 0.2f);
-        base.FailSkillCheck();
+        base.FailMinigame();
     }
 
-    protected override void ResetSkillCheck()
+    protected override void ResetMinigame()
     {
         _currentAngle = 0f;
         _pointer.localEulerAngles = Vector3.zero;
         _targetArea.fillAmount = 0;
         _criticalTargetArea.fillAmount = 0;
         GenerateNewTargetArea(false);
-        base.ResetSkillCheck();
+        base.ResetMinigame();
     }
 }

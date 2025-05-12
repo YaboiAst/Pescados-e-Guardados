@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class SkillCheck : MonoBehaviour
+public class Minigame : MonoBehaviour
 {
     [SerializeField] private KeyCode _interactKeyCode;
     
@@ -13,22 +13,22 @@ public class SkillCheck : MonoBehaviour
     [SerializeField] protected RectTransform _progressBarBackground;
     [SerializeField] protected Image _durationTimeBar;
 
-    public static Action<bool> OnSkillCheckFinished;
+    private static Action<MinigameResult> s_minigameComplete;
     
     protected float _speed = 500f;
     protected float _targetAreaSize = 10;
     protected int _criticalSuccessProgressAmount = 30;
     protected int _successProgressAmount = 15;
     protected int _failureProgressAmount = 10;
-    private float _progressAmount = 0;
+    private float _progressAmount;
 
-    private bool _decreaseProgressOvertime = false;
+    private bool _decreaseProgressOvertime;
     private int _decreaseAmount;
     private float _decreaseTimer;
     private float _timer;
 
     private float _duration = 10f;
-    private float _durationTimer = 0f;
+    private float _durationTimer;
     
     protected bool _isStopped = true;
 
@@ -53,7 +53,7 @@ public class SkillCheck : MonoBehaviour
         }
         
         if (_durationTimer <= 0)
-            FailSkillCheck();
+            FailMinigame();
         else
             _durationTimer -= Time.deltaTime;
     }
@@ -63,25 +63,27 @@ public class SkillCheck : MonoBehaviour
 
     }
 
-    public virtual void StartSkillCheck(SkillCheckData data)
+    public virtual void StartMinigame(MinigameSettings settings, Action<MinigameResult> completeMinigame)
     {
-        _speed = data.Speed;
-        _targetAreaSize = data.TargetAreaSize;
-        _criticalSuccessProgressAmount = data.CriticalSuccessProgress;
-        _successProgressAmount = data.SuccessProgress;
-        _failureProgressAmount = data.FailureProgress;
+        _speed = settings.Speed;
+        _targetAreaSize = settings.TargetAreaSize;
+        _criticalSuccessProgressAmount = settings.CriticalSuccessProgress;
+        _successProgressAmount = settings.SuccessProgress;
+        _failureProgressAmount = settings.FailureProgress;
 
-        _decreaseProgressOvertime = data.DecreaseProgressOvertime;
-        _decreaseAmount = data.DecreaseAmount;
-        _decreaseTimer = data.DecreaseTimer;
+        _decreaseProgressOvertime = settings.DecreaseProgressOvertime;
+        _decreaseAmount = settings.DecreaseAmount;
+        _decreaseTimer = settings.DecreaseTimer;
         
-        _duration = data.Duration;
-        _durationTimer = data.Duration;
+        _duration = settings.Duration;
+        _durationTimer = settings.Duration;
         
         _timer = _decreaseTimer;
         _isStopped = false;
         
         _progressAmount = 0;
+        
+        s_minigameComplete = completeMinigame;
         
         SetProgressAmount(0);
         
@@ -90,22 +92,22 @@ public class SkillCheck : MonoBehaviour
         _durationTimeBar.DOFillAmount(0, _duration).SetEase(Ease.Linear).SetId("duration");
         _progressBar.sizeDelta = new Vector2(0, _progressBar.sizeDelta.y);
         
-        ResetSkillCheck();
-        Debug.Log("SC Started");
+        ResetMinigame();
+        Debug.Log("Minigame Started");
     }
 
-    protected virtual void FailSkillCheck()
+    protected virtual void FailMinigame()
     {
         ResetUI();
-        OnSkillCheckFinished?.Invoke(false);
-        Debug.Log("SC Failed");
+        s_minigameComplete?.Invoke(MinigameResult.Fail);
+        Debug.Log("Minigame Failed");
     }
 
-    protected virtual void CompleteSkillCheck()
+    protected virtual void CompleteMinigame()
     {
         ResetUI();
-        OnSkillCheckFinished?.Invoke(true);
-        Debug.Log("SC Completed");
+        s_minigameComplete?.Invoke(MinigameResult.Won);
+        Debug.Log("Minigame Completed");
     }
     private void ResetUI()
     {
@@ -116,10 +118,10 @@ public class SkillCheck : MonoBehaviour
         DOTween.Kill("duration");
     }
 
-    protected virtual void ResetSkillCheck()
+    protected virtual void ResetMinigame()
     {
         _progressBar.sizeDelta = new Vector2(0, _progressBar.sizeDelta.y);
-        Debug.Log("SC Reseted");
+        Debug.Log("Minigame Reseted");
     }
 
     protected virtual void ModifyProgressAmount(int amount)
@@ -133,7 +135,7 @@ public class SkillCheck : MonoBehaviour
         else if (_progressAmount >= 100)
         {
             _progressAmount = 100f;
-            CompleteSkillCheck();
+            CompleteMinigame();
         }
         
         float size = (_progressBarBackground.rect.width / 100) * _progressAmount;
@@ -150,28 +152,4 @@ public class SkillCheck : MonoBehaviour
 
         _progressBar.sizeDelta = targetSize;
     }
-}
-
-public enum SkillCheckType
-{
-    BAR,
-    KEY,
-    CIRCLE
-}
-
-[Serializable]
-public struct SkillCheckData
-{
-    public float Speed;
-    public float TargetAreaSize;
-
-    public int CriticalSuccessProgress;
-    public int SuccessProgress;
-    public int FailureProgress;
-
-    public bool DecreaseProgressOvertime;
-    public int DecreaseAmount;
-    public float DecreaseTimer;
-
-    public float Duration;
 }

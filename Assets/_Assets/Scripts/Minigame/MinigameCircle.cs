@@ -1,10 +1,11 @@
+using System;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class SkillCheckCircle : SkillCheck
+public class MinigameCircle : Minigame
 {
     private static readonly int Radius = Shader.PropertyToID("_Radius");
     
@@ -28,7 +29,7 @@ public class SkillCheckCircle : SkillCheck
     [Button]
     private void StartButton()
     {
-        SkillCheckData data = new SkillCheckData
+        MinigameSettings settings = new MinigameSettings
         {
             Speed = 5f,
             TargetAreaSize = 20,
@@ -41,20 +42,20 @@ public class SkillCheckCircle : SkillCheck
             Duration = 20f
         };
         
-        StartSkillCheck(data);
+        StartMinigame(settings, null);
     }
 
-    protected override void Update()
-    {
-        base.Update();
-    }
+    // protected override void Update()
+    // {
+    //     base.Update();
+    // }
 
-    public override void StartSkillCheck(SkillCheckData data)
+    public override void StartMinigame(MinigameSettings settings, Action<MinigameResult> completeMinigame)
     {
-        base.StartSkillCheck(data);
+        base.StartMinigame(settings, completeMinigame);
         _speed *= 100;
         _speed = 5 / (_speed / 100);
-        ResetSkillCheck();
+        ResetMinigame();
         Restart();
     }
 
@@ -102,7 +103,7 @@ public class SkillCheckCircle : SkillCheck
         base.CheckSuccess();
     }
 
-    protected override void CompleteSkillCheck()
+    protected override void CompleteMinigame()
     {
         if(_isStopped)
             return;
@@ -110,22 +111,22 @@ public class SkillCheckCircle : SkillCheck
         DOTween.Kill("Shrink");
         _shrinkingMaterial.DOFloat(1, Radius, 0.3f);
         _targetMaterial.DOFloat(0, Radius, 0.3f);
-        base.CompleteSkillCheck();
+        base.CompleteMinigame();
     }
 
-    protected override void FailSkillCheck()
+    protected override void FailMinigame()
     {
         DOTween.Kill("Shrink");
         _shrinkingMaterial.DOFloat(1, Radius, 0.3f);
         _targetMaterial.DOFloat(0, Radius, 0.3f);
-        base.FailSkillCheck();
+        base.FailMinigame();
     }
 
-    protected override void ResetSkillCheck()
+    protected override void ResetMinigame()
     {
         _shrinkingMaterial.SetFloat(Radius, INITIAL_SIZE);
         GenerateNewTargetArea(false);
-        base.ResetSkillCheck();
+        base.ResetMinigame();
     }
 
     private void Restart()
