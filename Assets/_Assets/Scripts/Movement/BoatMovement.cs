@@ -7,11 +7,9 @@ public class BoatMovement : MonoBehaviour
 
     private void Update()
     {
-        // Move forward and backward
         float moveInput = Input.GetAxis("Vertical");
         transform.Translate(Vector3.forward * (moveInput * _moveSpeed * Time.deltaTime));
 
-        // Rotate left and right
         float rotationInput = Input.GetAxis("Horizontal");
         transform.Rotate(Vector3.up, rotationInput * _rotationSpeed * Time.deltaTime);
     }
