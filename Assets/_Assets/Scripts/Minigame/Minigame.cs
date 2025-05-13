@@ -1,14 +1,14 @@
 using System;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Minigame : MonoBehaviour
 {
     [SerializeField] private KeyCode _interactKeyCode;
-    
-    [Header("UI Settings")]
+
+    [Header("UI Settings")] 
+    [SerializeField] private GameObject _canvas;
     [SerializeField] protected RectTransform _progressBar;
     [SerializeField] protected RectTransform _progressBarBackground;
     [SerializeField] protected Image _durationTimeBar;
@@ -98,16 +98,22 @@ public class Minigame : MonoBehaviour
 
     protected virtual void FailMinigame()
     {
-        ResetUI();
-        s_minigameComplete?.Invoke(MinigameResult.Fail);
+        CompleteMinigame();
         Debug.Log("Minigame Failed");
     }
 
+    protected virtual void WonMinigame()
+    {
+        CompleteMinigame();
+        Debug.Log("Minigame Completed");
+    }
+    
+    // TODO Arrumar as children da classe pra supporta novo metodo
     protected virtual void CompleteMinigame()
     {
         ResetUI();
         s_minigameComplete?.Invoke(MinigameResult.Won);
-        Debug.Log("Minigame Completed");
+        _canvas.gameObject.SetActive(false);
     }
     private void ResetUI()
     {
@@ -135,7 +141,7 @@ public class Minigame : MonoBehaviour
         else if (_progressAmount >= 100)
         {
             _progressAmount = 100f;
-            CompleteMinigame();
+            WonMinigame();
         }
         
         float size = (_progressBarBackground.rect.width / 100) * _progressAmount;

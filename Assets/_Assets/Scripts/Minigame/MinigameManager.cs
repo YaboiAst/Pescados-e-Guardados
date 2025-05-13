@@ -13,7 +13,7 @@ public class MinigameManager : MonoBehaviour
 
     private void Awake() => s_Instance = this;
 
-    public void StartNewMinigame(MinigameSettings settings, Action<MinigameResult> completeMinigame)
+    public void StartMinigame(MinigameSettings settings, Action<MinigameResult> completeMinigame)
     {
         switch (settings.Type)
         {

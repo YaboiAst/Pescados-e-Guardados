@@ -109,12 +109,12 @@ public class MinigameBar : Minigame
         }
     }
 
-    protected override void CompleteMinigame()
+    protected override void WonMinigame()
     {
         _pointer.DOAnchorPosX(0, 0.2f).SetEase(Ease.OutQuint);
         _targetArea.DOScaleX(0, 0.2f);
 
-        base.CompleteMinigame();
+        base.WonMinigame();
     }
 
     protected override void FailMinigame()

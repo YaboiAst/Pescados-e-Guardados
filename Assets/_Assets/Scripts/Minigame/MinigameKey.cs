@@ -114,13 +114,13 @@ public class MinigameKey : Minigame
         }
     }
 
-    protected override void CompleteMinigame()
+    protected override void WonMinigame()
     {
         _currentAngle = 0;
         _pointer.DORotate(Vector3.zero, 0.2f).SetEase(Ease.OutQuint);
         _targetArea.DOFillAmount(0, 0.2f);
         _criticalTargetArea.DOFillAmount(0, 0.2f);
-        base.CompleteMinigame();
+        base.WonMinigame();
     }
 
     protected override void FailMinigame()

@@ -103,7 +103,7 @@ public class MinigameCircle : Minigame
         base.CheckSuccess();
     }
 
-    protected override void CompleteMinigame()
+    protected override void WonMinigame()
     {
         if(_isStopped)
             return;
@@ -111,7 +111,7 @@ public class MinigameCircle : Minigame
         DOTween.Kill("Shrink");
         _shrinkingMaterial.DOFloat(1, Radius, 0.3f);
         _targetMaterial.DOFloat(0, Radius, 0.3f);
-        base.CompleteMinigame();
+        base.WonMinigame();
     }
 
     protected override void FailMinigame()
