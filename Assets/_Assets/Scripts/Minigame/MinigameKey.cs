@@ -39,7 +39,7 @@ public class MinigameKey : Minigame
     public override void StartMinigame(MinigameSettings settings, Action<MinigameResult> completeMinigame)
     {
         base.StartMinigame(settings, completeMinigame);
-        _speed *= 50f;
+        _speed *= 5f;
         _targetAreaSize *= 1.8f;
         GenerateNewTargetArea();
     }

@@ -17,13 +17,13 @@ public class Minigame : MonoBehaviour
     
     protected float _speed = 500f;
     protected float _targetAreaSize = 10;
-    protected int _criticalSuccessProgressAmount = 30;
-    protected int _successProgressAmount = 15;
-    protected int _failureProgressAmount = 10;
+    protected float _criticalSuccessProgressAmount = 30;
+    protected float _successProgressAmount = 15;
+    protected float _failureProgressAmount = 10;
     private float _progressAmount;
 
     private bool _decreaseProgressOvertime;
-    private int _decreaseAmount;
+    private float _decreaseAmount;
     private float _decreaseTimer;
     private float _timer;
 
@@ -130,7 +130,7 @@ public class Minigame : MonoBehaviour
         Debug.Log("Minigame Reseted");
     }
 
-    protected virtual void ModifyProgressAmount(int amount)
+    protected virtual void ModifyProgressAmount(float amount)
     {
         _progressAmount += amount;
 

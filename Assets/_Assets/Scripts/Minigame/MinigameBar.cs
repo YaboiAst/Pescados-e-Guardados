@@ -34,7 +34,7 @@ public class MinigameBar : Minigame
     public override void StartMinigame(MinigameSettings settings, Action<MinigameResult> completeMinigame)
     {
         base.StartMinigame(settings, completeMinigame);
-        _speed *= 100;
+        _speed *= 10;
         _targetArea.DOScaleX(1, 0.2f);
         GenerateNewTargetArea(false);
     }

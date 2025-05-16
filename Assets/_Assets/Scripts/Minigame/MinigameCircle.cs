@@ -53,7 +53,7 @@ public class MinigameCircle : Minigame
     public override void StartMinigame(MinigameSettings settings, Action<MinigameResult> completeMinigame)
     {
         base.StartMinigame(settings, completeMinigame);
-        _speed *= 100;
+        _speed *= 10;
         _speed = 5 / (_speed / 100);
         ResetMinigame();
         Restart();
