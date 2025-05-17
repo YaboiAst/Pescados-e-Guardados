@@ -13,7 +13,7 @@ public class Interactable : MonoBehaviour
 
     [SerializeField] private float _timeToInteract = 0f;
     [SerializeField] private float _interactionRange;
-    [Tooltip("Use 0 pra usar infinitamente")] 
+    [Tooltip("Use -1 pra usar infinitamente")] 
     [Min(0)] 
     [SerializeField] private int _maxInteractions = 1;
 
@@ -24,14 +24,12 @@ public class Interactable : MonoBehaviour
     // [SerializeField] private MinigameSettings _minigameSettings;
     [SerializeField] protected InteractionType _interactionType;
 
-
     private float _timeInteracted = 0f;
-    protected int _interactionCount = 0;
+    public int _interactionCount = 0;
 
     public float InteractionProgress => _timeInteracted / _timeToInteract;
-    public bool WasFullyInteracted => InteractionProgress >= 1 || _instantInteract == true;
+    public bool WasFullyInteracted => InteractionProgress >= 1;
 
-    private bool _instantInteract;
     private IMet[] _allConditions;
 
     public virtual InteractionType InteractionType => _interactionType;
@@ -45,7 +43,6 @@ public class Interactable : MonoBehaviour
     [Button("[DEBUG] Interact")]
     public void DebugInteract()
     {
-        _instantInteract = true;
         _interactionCount = _maxInteractions;
         InteractionCompleted?.Invoke();
         SendInteractionComplete();
@@ -80,8 +77,10 @@ public class Interactable : MonoBehaviour
         if (WasFullyInteracted)
             return;
 
-        if (_timeToInteract == 0f)
-            _instantInteract = true;
+        Debug.Log("Interact");
+
+        if (_timeToInteract == 0.0f)
+            CompleteIteraction();
 
         _timeInteracted += Time.deltaTime;
 
@@ -96,7 +95,6 @@ public class Interactable : MonoBehaviour
             // else
             CompleteIteraction();
         }
-        Debug.Log("Interact");
     }
     
     private void CompleteIteraction()
@@ -106,6 +104,7 @@ public class Interactable : MonoBehaviour
         if (_maxInteractions == 0)
         {
             _interactionCount = 0;
+            _timeInteracted = 0;
         }
         else
         {
@@ -126,11 +125,12 @@ public class Interactable : MonoBehaviour
     private void HandleMinigameCompleted(MinigameResult result)
     {
         if (result == MinigameResult.Won)
+        {
             CompleteIteraction();
+        }
         else if (result == MinigameResult.Fail)
         {
             _timeInteracted = 0f;
-            _instantInteract = false;
             s_interactablesInRange.Add(this);
             InteractablesInRangeChanged?.Invoke(s_interactablesInRange.Any());
         }
@@ -167,13 +167,11 @@ public class Interactable : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, _interactionRange);
 
-
         Gizmos.color = CheckConditions() ? Color.green : Color.yellow;
 
         if (WasFullyInteracted)
             Gizmos.color = Color.red;
 
         Gizmos.DrawSphere(transform.position + new Vector3(0, 2f, 0), 5f);
-
     }
 }

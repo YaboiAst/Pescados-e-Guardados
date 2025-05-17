@@ -21,6 +21,8 @@ public class FishingSpotInteraction : MonoBehaviour
         _currentFish = _lootTable.GetLootDropItem().Item;
         Debug.Log(_currentFish.DisplayName);
 
+        FishInfoPanel.s_Instance.GenerateFishInfoProbabilities(_lootTable.LootDropItems);
+
         // int difficulty;
         
         // switch (_currentFish.Rarity)
