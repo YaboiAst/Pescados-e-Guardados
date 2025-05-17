@@ -63,8 +63,14 @@ public class SettingsPanel : MonoBehaviour
         _settings = settings;
     }
 
-    public void StartMinigame(int index, MinigameType type)
+    public void StartMinigame(int index)
     {
+        var type = MinigameType.Bar;
+        if(index == 1)
+            type = MinigameType.Key;
+        else if(index == 2)
+            type = MinigameType.Circle;
+
         _settings.Type = type;
         EventSystem.current.SetSelectedGameObject(null);
         MinigameManager.s_Instance.StartMinigame(_settings, OnComplete);

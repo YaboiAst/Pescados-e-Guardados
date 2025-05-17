@@ -61,7 +61,6 @@ public class Interactable : MonoBehaviour
     {
         if (other.CompareTag("Player") && !WasFullyInteracted)
         {
-            Debug.Log("Entered");
             s_interactablesInRange.Add(this);
             InteractablesInRangeChanged?.Invoke(true);
         }

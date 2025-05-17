@@ -35,7 +35,6 @@ public class InteractionManager : MonoBehaviour
 
     private void Update()
     {
-        // TODO Add condicoes para os interactables
         if (!_currentInteractable)
         {
             Interacting = false;

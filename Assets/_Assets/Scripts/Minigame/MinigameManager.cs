@@ -11,7 +11,11 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] private GameObject _minigameKey;
     [SerializeField] private GameObject _minigameCircle;
 
-    private void Awake() => s_Instance = this;
+    private void Awake()
+    {
+        if(s_Instance == null)
+            s_Instance = this;   
+    }
 
     public void StartMinigame(MinigameSettings settings, Action<MinigameResult> completeMinigame)
     {
@@ -75,7 +79,7 @@ public class MinigameManager : MonoBehaviour
 
     private MinigameSettings GenerateMinigameSettings(int difficulty, MinigameType type)
     {
-                const float MIN_SPEED = 1f, MAX_SPEED = 10f;
+                const float MIN_SPEED = 10f, MAX_SPEED = 100f;
                 const float MIN_TARGET_AREA_SIZE = 10f, MAX_TARGET_AREA_SIZE = 100f;
                 const float MIN_CRITICAL_SUCCESS = 10f, MAX_CRITICAL_SUCCESS = 40f;
                 const float MIN_SUCCESS = 5f, MAX_SUCCESS = 25f;
