@@ -39,7 +39,7 @@ public class SettingsPanel : MonoBehaviour
     {
         MinigameSettings settings = new MinigameSettings
         {
-            Speed = 5f,
+            Speed = 50f,
             TargetAreaSize = 20,
             CriticalSuccessProgress = 25,
             SuccessProgress = 15,
