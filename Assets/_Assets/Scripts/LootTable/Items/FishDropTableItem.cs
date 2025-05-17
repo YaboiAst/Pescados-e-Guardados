@@ -5,5 +5,5 @@ using System.Collections.Generic;
 [System.Serializable]
 public class FishLootDropItem : GenericLootDropItem<FishSO>
 {
-
+    
 }

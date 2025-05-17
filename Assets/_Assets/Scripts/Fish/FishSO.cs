@@ -1,4 +1,5 @@
 using UnityEngine;
+using NaughtyAttributes;
 
 [CreateAssetMenu(menuName = "Fish/New Fish")]
 public class FishSO : ScriptableObject
@@ -8,17 +9,17 @@ public class FishSO : ScriptableObject
     [SerializeField] private string _description;
     [SerializeField] private FishRarity _rarity;
     [SerializeField] private Vector2 _gridSize;
-    [SerializeField] private float _points;
+    [SerializeField] private float _basePoints;
     [SerializeField] private Sprite _icon;
-    [SerializeField] private float _minWeight;
-    [SerializeField] private float _maxWeight;
+    [MinMaxSlider(0.0f, 100.0f)]
+    [SerializeField] private Vector2 _weightRange;
     
     public string DisplayName => _displayName;
     public string Description => _description;
     public FishRarity Rarity => _rarity;
     public Vector2 GridSize => _gridSize;
-    public float Points => _points;
+    public float BasePoints => _basePoints;
     public Sprite Icon => _icon;
-    public float MinWeight => _minWeight;
-    public float MaxWeight => _maxWeight;
+    public float MinWeight => _weightRange.x;
+    public float MaxWeight => _weightRange.y;
 }

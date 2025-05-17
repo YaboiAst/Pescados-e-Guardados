@@ -35,6 +35,7 @@ public class InteractionManager : MonoBehaviour
 
     private void Update()
     {
+        // TODO Checkar a condicao
         if (!_currentInteractable)
         {
             Interacting = false;

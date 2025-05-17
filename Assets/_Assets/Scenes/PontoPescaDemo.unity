@@ -455,25 +455,30 @@ MonoBehaviour:
   _lootTable:
     LootDropItems:
     - Item: {fileID: 11400000, guid: 89559212a0b14e546bafc08c09d9496b, type: 2}
-      ProbabilityWeight: 10
-      ProbabilityPercent: 0
-      ProbabilityRangeFrom: 0
-      ProbabilityRangeTo: 0
-    - Item: {fileID: 11400000, guid: 2199b56760d189c4fb3d96c7f00ac107, type: 2}
       ProbabilityWeight: 5
-      ProbabilityPercent: 0
+      ProbabilityPercent: 33.333332
       ProbabilityRangeFrom: 0
-      ProbabilityRangeTo: 0
+      ProbabilityRangeTo: 5
+    - Item: {fileID: 11400000, guid: 2199b56760d189c4fb3d96c7f00ac107, type: 2}
+      ProbabilityWeight: 4
+      ProbabilityPercent: 26.666666
+      ProbabilityRangeFrom: 5
+      ProbabilityRangeTo: 9
     - Item: {fileID: 11400000, guid: bc39a54743c32a149988eb604d1c3a41, type: 2}
-      ProbabilityWeight: 2
-      ProbabilityPercent: 0
-      ProbabilityRangeFrom: 0
-      ProbabilityRangeTo: 0
+      ProbabilityWeight: 3
+      ProbabilityPercent: 20
+      ProbabilityRangeFrom: 9
+      ProbabilityRangeTo: 12
     - Item: {fileID: 11400000, guid: 88600f119a5e1c945bc74b99fbbc7092, type: 2}
+      ProbabilityWeight: 2
+      ProbabilityPercent: 13.333333
+      ProbabilityRangeFrom: 12
+      ProbabilityRangeTo: 14
+    - Item: {fileID: 11400000, guid: 1a595ebf3e742074484c5f15ef557663, type: 2}
       ProbabilityWeight: 1
-      ProbabilityPercent: 0
-      ProbabilityRangeFrom: 0
-      ProbabilityRangeTo: 0
+      ProbabilityPercent: 6.6666665
+      ProbabilityRangeFrom: 14
+      ProbabilityRangeTo: 15
 --- !u!1 &510404903
 GameObject:
   m_ObjectHideFlags: 3

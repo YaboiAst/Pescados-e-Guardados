@@ -11,6 +11,11 @@ public class FishingSpotInteraction : MonoBehaviour
 
     private FishSO _currentFish;
 
+    private void OnValidate()
+    {
+        _lootTable.ValidateTable();
+    }
+
     public void Interact()
     {
         _currentFish = _lootTable.GetLootDropItem().Item;

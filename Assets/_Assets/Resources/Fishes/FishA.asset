@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: FishA
   m_EditorClassIdentifier: 
   _displayName: Pexe A
-  _description: aaaaaaaaaaaaaa
+  _description: 
   _rarity: 0
-  _gridSize: {x: 2, y: 2}
-  _points: 0
+  _gridSize: {x: 0, y: 0}
+  _basePoints: 0
   _icon: {fileID: 0}
-  _minWeight: 0
-  _maxWeight: 0
+  _weightRange: {x: 0, y: 0}
