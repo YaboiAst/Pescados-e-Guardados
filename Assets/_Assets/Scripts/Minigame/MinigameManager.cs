@@ -72,7 +72,7 @@ public class MinigameManager : MonoBehaviour
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }
 
-       MinigameSettings minigameSettings = GenerateMinigameSettings(difficulty, type);
+        MinigameSettings minigameSettings = GenerateMinigameSettings(difficulty, type);
 
         s_currentMinigame.StartMinigame(minigameSettings, completeMinigame);
     }

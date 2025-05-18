@@ -45,7 +45,6 @@ public abstract class GenericLootDropTable<T,U> where T: GenericLootDropItem<U>
         {
             if(pickedNumber > lootDropItem.ProbabilityRangeFrom && pickedNumber < lootDropItem.ProbabilityRangeTo)
                 return lootDropItem;
-            
         }
 
         return LootDropItems[0];

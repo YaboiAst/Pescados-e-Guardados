@@ -14,6 +14,7 @@ public class Minigame : MonoBehaviour
     [SerializeField] protected Image _durationTimeBar;
 
     private static Action<MinigameResult> s_minigameComplete;
+    public static Action<bool> s_OnMinigameUpdated;
     
     protected float _speed = 500f;
     protected float _targetAreaSize = 10;
@@ -94,6 +95,7 @@ public class Minigame : MonoBehaviour
         
         ResetMinigame();
         Debug.Log("Minigame Started");
+        s_OnMinigameUpdated?.Invoke(true);
     }
 
     protected virtual void FailMinigame()
@@ -113,6 +115,7 @@ public class Minigame : MonoBehaviour
     {
         ResetUI();
         s_minigameComplete?.Invoke(MinigameResult.Won);
+        s_OnMinigameUpdated?.Invoke(false);
         _canvas.gameObject.SetActive(false);
     }
     private void ResetUI()

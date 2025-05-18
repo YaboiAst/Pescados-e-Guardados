@@ -9,7 +9,7 @@ public class InteractionManager : MonoBehaviour
     public GameObject CurrentInteractable;
     public static bool Interacting { get; private set; }
     public static float InteractionProgress => _currentInteractable?.InteractionProgress ?? 0f;
-    
+    private bool _canInteract = true;
     
     public event Action<Interactable> CurrentInteractableChanged;
 
@@ -18,9 +18,26 @@ public class InteractionManager : MonoBehaviour
         Interactable.InteractablesInRangeChanged += HandleInteractablesInRangeChanged;
     }
 
+    private void OnEnable()
+    {
+        Minigame.s_OnMinigameUpdated += MinigameUpdated;
+    }
+
     private void OnDestroy()
     {
         Interactable.InteractablesInRangeChanged -= HandleInteractablesInRangeChanged;
+        Minigame.s_OnMinigameUpdated -= MinigameUpdated;
+    }
+
+    private void MinigameUpdated(bool hasStarted)
+    {
+        if(hasStarted)
+        {
+            _canInteract = false;
+        }else
+        {
+            _canInteract = true;
+        }
     }
 
     private void HandleInteractablesInRangeChanged(bool obj)
@@ -35,6 +52,12 @@ public class InteractionManager : MonoBehaviour
 
     private void Update()
     {
+        if(!_canInteract)
+        {
+            Interacting = false;
+            return;
+        }
+
         // TODO Checkar a condicao
         if (!_currentInteractable)
         {

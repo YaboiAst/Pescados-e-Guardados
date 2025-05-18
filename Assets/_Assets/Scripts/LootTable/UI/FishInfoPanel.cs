@@ -15,17 +15,21 @@ public class FishInfoPanel : MonoBehaviour
 
     public void GenerateFishInfoProbabilities(List<FishLootDropItem> fishes)
     {
-        foreach(Transform child in this.transform)
-        {
-            Destroy(child.gameObject);
-        }
-
+        ClearFishInfoProbabilities();
 
         foreach(var fish in fishes)
         {
             var fishInfo = Instantiate(_fishInfoUIPrefab, this.transform).GetComponent<FishInfoUI>();
 
             fishInfo.SetupFishInfo(fish);
+        }
+    }
+
+    public void ClearFishInfoProbabilities()
+    {
+         foreach(Transform child in this.transform)
+        {
+            Destroy(child.gameObject);
         }
     }
 }

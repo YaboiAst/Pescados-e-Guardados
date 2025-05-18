@@ -25,7 +25,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] protected InteractionType _interactionType;
 
     private float _timeInteracted = 0f;
-    public int _interactionCount = 0;
+    protected int _interactionCount = 0;
 
     public float InteractionProgress => _timeInteracted / _timeToInteract;
     public bool WasFullyInteracted => InteractionProgress >= 1;
