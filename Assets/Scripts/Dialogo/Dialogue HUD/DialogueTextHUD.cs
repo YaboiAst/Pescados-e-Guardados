@@ -14,7 +14,11 @@ public class DialogueTextHUD : MonoBehaviour
     private void Awake()
     {
         DialogueManager.OnDialogueEvent.AddListener(WriteText);
-        DialogueManager.OnFinishDialogue.AddListener(() => gameObject.SetActive(false));
+        DialogueManager.OnFinishDialogue.AddListener(() => {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            gameObject.SetActive(false);
+        });
         
         dialogueTextName.text = "";
         dialogueTextBox.text = "";
@@ -27,6 +31,9 @@ public class DialogueTextHUD : MonoBehaviour
         this.gameObject.SetActive(true);
 
         dialogueIcon.color = Color.white;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+
         dialogueIcon.sprite = textToWrite.whosTalkingIcon;
         if(dialogueIcon.sprite == null) dialogueIcon.color = Color.clear;
         
