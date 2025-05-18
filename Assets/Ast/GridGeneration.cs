@@ -12,14 +12,14 @@ public class GridGeneration : MonoBehaviour
     [Space(5)]
     [SerializeField] private GridTile tilePrefab;
     
-    private int tileSize = 64;
+    private Vector2Int _tileSize = Vector2Int.one * 64;
 
     private void Awake()
     {
         HandleResize();
         
         var gridGroup = this.GetComponent<GridLayoutGroup>();
-        gridGroup.cellSize = Vector2.one * tileSize;
+        gridGroup.cellSize = Vector2.one * _tileSize;
         
         var parentRoot = this.transform;
 
@@ -34,24 +34,11 @@ public class GridGeneration : MonoBehaviour
     {
         if (!TryGetComponent<RectTransform>(out var frameRef)) return;
         var frameRect = frameRef.rect;
+        if (!TryGetComponent<GridLayoutGroup>(out var gridGroup)) return;
             
         var cellWidth = (int) frameRect.width / width;
         var cellHeight = (int) frameRect.height / height;
 
-        var resizeTarget = transform.parent.GetComponent<RectTransform>();
-        if (cellHeight > cellWidth)
-        {
-            resizeTarget.sizeDelta = new Vector2(cellHeight * width, frameRect.height);
-            tileSize = cellHeight;
-        }
-        else if (cellHeight < cellWidth)
-        {
-            resizeTarget.sizeDelta = new Vector2(frameRect.width, cellWidth * height);
-            tileSize = cellWidth;
-        }
-        else
-        {
-            tileSize = cellWidth;
-        }
+        _tileSize = new Vector2Int(cellWidth, cellHeight);
     }
 }
