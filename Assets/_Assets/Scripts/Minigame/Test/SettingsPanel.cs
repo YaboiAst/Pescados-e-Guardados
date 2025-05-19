@@ -73,7 +73,7 @@ public class SettingsPanel : MonoBehaviour
 
         _settings.Type = type;
         EventSystem.current.SetSelectedGameObject(null);
-        MinigameManager.s_Instance.StartMinigame(_settings, OnComplete);
+        MinigameManager.Instance.StartMinigame(_settings, OnComplete);
     }
 
     private void OnComplete(MinigameResult result)

@@ -15,6 +15,12 @@ public class InteractionPanel : MonoBehaviour
         interactionManager.CurrentInteractableChanged += UpdateInteractionText;
         Interactable.AnyInteractionComplete += ShowCompletedInteractionText;
     }
+    
+    private void OnDestroy()
+    {
+        Interactable.InteractablesInRangeChanged -= UpdateHintTextState;
+        Interactable.AnyInteractionComplete -= ShowCompletedInteractionText;
+    }
 
     private void UpdateInteractionText(Interactable interactable)
     {
@@ -51,13 +57,6 @@ public class InteractionPanel : MonoBehaviour
 
         _completedText.gameObject.SetActive(false);
     }
-
-    private void OnDisable()
-    {
-        Interactable.InteractablesInRangeChanged -= UpdateHintTextState;
-        Interactable.AnyInteractionComplete -= ShowCompletedInteractionText;
-    }
-
     private void UpdateHintTextState(bool enableHint)
     {
         _hintText.enabled = enableHint;

@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class MinigameManager : MonoBehaviour
 {
-    public static MinigameManager s_Instance;
+    public static MinigameManager Instance;
 
-    private static Minigame s_currentMinigame;
+    private static Minigame _currentMinigame;
 
     [SerializeField] private GameObject _minigameBar;
     [SerializeField] private GameObject _minigameKey;
@@ -13,8 +13,8 @@ public class MinigameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(s_Instance == null)
-            s_Instance = this;   
+        if(Instance == null)
+            Instance = this;   
     }
 
     public void StartMinigame(MinigameSettings settings, Action<MinigameResult> completeMinigame)
@@ -25,25 +25,25 @@ public class MinigameManager : MonoBehaviour
                 _minigameBar.SetActive(true);
                 _minigameKey.SetActive(false);
                 _minigameCircle.SetActive(false);
-                s_currentMinigame = _minigameBar.GetComponentInChildren<Minigame>();
+                _currentMinigame = _minigameBar.GetComponentInChildren<Minigame>();
                 break;
             case MinigameType.Key:
                 _minigameBar.SetActive(false);
                 _minigameKey.SetActive(true);
                 _minigameCircle.SetActive(false);
-                s_currentMinigame = _minigameKey.GetComponentInChildren<Minigame>();
+                _currentMinigame = _minigameKey.GetComponentInChildren<Minigame>();
                 break;
             case MinigameType.Circle:
                 _minigameBar.SetActive(false);
                 _minigameKey.SetActive(false);
                 _minigameCircle.SetActive(true);
-                s_currentMinigame = _minigameCircle.GetComponentInChildren<Minigame>();
+                _currentMinigame = _minigameCircle.GetComponentInChildren<Minigame>();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(settings.Type), settings.Type, null);
         }
         
-        s_currentMinigame.StartMinigame(settings, completeMinigame);
+        _currentMinigame.StartMinigame(settings, completeMinigame);
     }
     
     public void StartMinigame(int difficulty, MinigameType type, Action<MinigameResult> completeMinigame)
@@ -54,19 +54,19 @@ public class MinigameManager : MonoBehaviour
                 _minigameBar.SetActive(true);
                 _minigameKey.SetActive(false);
                 _minigameCircle.SetActive(false);
-                s_currentMinigame = _minigameBar.GetComponentInChildren<Minigame>();
+                _currentMinigame = _minigameBar.GetComponentInChildren<Minigame>();
                 break;
             case MinigameType.Key:
                 _minigameBar.SetActive(false);
                 _minigameKey.SetActive(true);
                 _minigameCircle.SetActive(false);
-                s_currentMinigame = _minigameKey.GetComponentInChildren<Minigame>();
+                _currentMinigame = _minigameKey.GetComponentInChildren<Minigame>();
                 break;
             case MinigameType.Circle:
                 _minigameBar.SetActive(false);
                 _minigameKey.SetActive(false);
                 _minigameCircle.SetActive(true);
-                s_currentMinigame = _minigameCircle.GetComponentInChildren<Minigame>();
+                _currentMinigame = _minigameCircle.GetComponentInChildren<Minigame>();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
@@ -74,7 +74,7 @@ public class MinigameManager : MonoBehaviour
 
         MinigameSettings minigameSettings = GenerateMinigameSettings(difficulty, type);
 
-        s_currentMinigame.StartMinigame(minigameSettings, completeMinigame);
+        _currentMinigame.StartMinigame(minigameSettings, completeMinigame);
     }
 
     private MinigameSettings GenerateMinigameSettings(int difficulty, MinigameType type)

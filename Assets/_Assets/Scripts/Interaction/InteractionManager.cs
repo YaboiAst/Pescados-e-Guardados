@@ -58,15 +58,13 @@ public class InteractionManager : MonoBehaviour
             return;
         }
 
-        // TODO Checkar a condicao
-        if (!_currentInteractable)
+        if (!_currentInteractable || !_currentInteractable.CheckConditions())
         {
             Interacting = false;
             return;
         }
         
-        // TODO Bind customizavel pra cada interactable
-        if (_currentInteractable && Input.GetKey(KeyCode.E))
+        if (_currentInteractable != null && Input.GetKey(_currentInteractable.InteractionType.Hotkey))
         {
             _currentInteractable.Interact();
             Interacting = true;

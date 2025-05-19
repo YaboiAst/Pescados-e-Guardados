@@ -94,23 +94,22 @@ public class Minigame : MonoBehaviour
         _progressBar.sizeDelta = new Vector2(0, _progressBar.sizeDelta.y);
         
         ResetMinigame();
-        Debug.Log("Minigame Started");
+        //Debug.Log("Minigame Started");
         s_OnMinigameUpdated?.Invoke(true);
     }
 
     protected virtual void FailMinigame()
     {
         CompleteMinigame();
-        Debug.Log("Minigame Failed");
+        //Debug.Log("Minigame Failed");
     }
 
     protected virtual void WonMinigame()
     {
         CompleteMinigame();
-        Debug.Log("Minigame Completed");
+        //Debug.Log("Minigame Completed");
     }
     
-    // TODO Arrumar as children da classe pra supporta novo metodo
     protected virtual void CompleteMinigame()
     {
         ResetUI();
@@ -130,7 +129,7 @@ public class Minigame : MonoBehaviour
     protected virtual void ResetMinigame()
     {
         _progressBar.sizeDelta = new Vector2(0, _progressBar.sizeDelta.y);
-        Debug.Log("Minigame Reseted");
+        //Debug.Log("Minigame Reseted");
     }
 
     protected virtual void ModifyProgressAmount(float amount)

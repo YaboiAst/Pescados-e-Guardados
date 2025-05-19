@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5605677175499696579}
   - component: {fileID: 8265134619050343638}
   - component: {fileID: 3059773818832836143}
-  - component: {fileID: 4832134907656946787}
   m_Layer: 0
   m_Name: Interactable Base
   m_TagString: Untagged
@@ -68,7 +67,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581a790c14473d247891b1f58b5129c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionType: {fileID: 11400000, guid: effede98faa9db9409700c9e8cb2007f, type: 2}
   _timeToInteract: 0
   _interactionRange: 50
   _maxInteractions: 1
@@ -78,31 +76,7 @@ MonoBehaviour:
   _onLastInteractionCompleted:
     m_PersistentCalls:
       m_Calls: []
-  _requireMinigame: 1
-  _minigameSettings:
-    Type: 2
-    Speed: 5
-    TargetAreaSize: 20
-    CriticalSuccessProgress: 20
-    SuccessProgress: 10
-    FailureProgress: 9
-    DecreaseProgressOvertime: 0
-    DecreaseAmount: 0
-    DecreaseTimer: 0
-    Duration: 20
---- !u!114 &4832134907656946787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2384114013348909396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74db3bc361d961c45a9066c8a476eea8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _requiredInteractable: {fileID: 0}
+  _interactionType: {fileID: 11400000, guid: effede98faa9db9409700c9e8cb2007f, type: 2}
 --- !u!1 &6575311382430692532
 GameObject:
   m_ObjectHideFlags: 0

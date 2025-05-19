@@ -5,12 +5,12 @@ using TMPro;
 public class FishInfoUI : MonoBehaviour
 {
     [SerializeField] private Image _fishIcon;
-    [SerializeField] private TMP_Text _fishProbabilitieText;
+    [SerializeField] private TMP_Text _fishProbabilityText;
 
-    public void SetupFishInfo(FishLootDropItem fish)
+    public void SetupFishInfo(FishItem fish)
     {
         _fishIcon.sprite = fish.Item.Icon;
-        _fishProbabilitieText.SetText(fish.ProbabilityPercent.ToString("F2") + "%");
+        _fishProbabilityText.SetText(fish.ProbabilityPercent.ToString("F2") + "%");
 
         Color textColor = Color.white;
 
@@ -30,6 +30,6 @@ public class FishInfoUI : MonoBehaviour
                 break;        
         }
 
-        _fishProbabilitieText.color = textColor;
+        _fishProbabilityText.color = textColor;
     }
 }

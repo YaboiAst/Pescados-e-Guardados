@@ -13,12 +13,14 @@ public class Interactable : MonoBehaviour
 
     [SerializeField] private float _timeToInteract = 0f;
     [SerializeField] private float _interactionRange;
-    [Tooltip("Use -1 pra usar infinitamente")] 
+    [Tooltip("Use 0 pra usar infinitamente")] 
     [Min(0)] 
     [SerializeField] private int _maxInteractions = 1;
 
     [SerializeField] private UnityEvent _onInteractionCompleted;
     [SerializeField] private UnityEvent _onLastInteractionCompleted;
+    public Action OnPlayerEnterTrigger;
+    public Action OnPlayerExitTrigger;
 
     // [SerializeField] private bool _requireMinigame;
     // [SerializeField] private MinigameSettings _minigameSettings;
@@ -60,6 +62,7 @@ public class Interactable : MonoBehaviour
         {
             s_interactablesInRange.Add(this);
             InteractablesInRangeChanged?.Invoke(true);
+            OnPlayerEnterTrigger?.Invoke();
         }
     }
 
@@ -69,6 +72,8 @@ public class Interactable : MonoBehaviour
         {
             if (s_interactablesInRange.Remove(this))
                 InteractablesInRangeChanged?.Invoke(s_interactablesInRange.Any());
+            
+            OnPlayerExitTrigger?.Invoke();
         }
     }
 
@@ -76,8 +81,6 @@ public class Interactable : MonoBehaviour
     {
         if (WasFullyInteracted)
             return;
-
-        Debug.Log("Interact");
 
         if (_timeToInteract == 0.0f)
             CompleteIteraction();

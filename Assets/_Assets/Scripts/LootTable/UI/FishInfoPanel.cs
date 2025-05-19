@@ -1,33 +1,42 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 public class FishInfoPanel : MonoBehaviour
 {
     [SerializeField] private GameObject _fishInfoUIPrefab;
 
-    public static FishInfoPanel s_Instance;
+    public static FishInfoPanel Instance;
+
+    private CanvasGroup _canvasGroup;
 
     private void Awake()
     {
-        s_Instance = this;
+        Instance = this;
+        _canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    public void GenerateFishInfoProbabilities(List<FishLootDropItem> fishes)
+    public void GenerateFishInfoProbabilities(FishLootTable fishes)
     {
         ClearFishInfoProbabilities();
 
-        foreach(var fish in fishes)
+        foreach (FishItem fish in fishes.LootDropItems)
         {
-            var fishInfo = Instantiate(_fishInfoUIPrefab, this.transform).GetComponent<FishInfoUI>();
+            FishInfoUI fishInfo = Instantiate(_fishInfoUIPrefab, this.transform).GetComponent<FishInfoUI>();
 
             fishInfo.SetupFishInfo(fish);
         }
+
+        _canvasGroup.alpha = 1;
+        _canvasGroup.interactable = true;
+        _canvasGroup.blocksRaycasts = true;
     }
 
     public void ClearFishInfoProbabilities()
     {
-         foreach(Transform child in this.transform)
+        _canvasGroup.alpha = 0;
+        _canvasGroup.interactable = false;
+        _canvasGroup.blocksRaycasts = false;
+        
+        foreach (Transform child in this.transform)
         {
             Destroy(child.gameObject);
         }

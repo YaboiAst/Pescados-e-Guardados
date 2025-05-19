@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fishIcon: {fileID: 4736524191454470705}
-  _fishProbabilitieText: {fileID: 4152622307542481976}
+  _fishProbabilityText: {fileID: 4152622307542481976}
 --- !u!1 &1134636128619598816
 GameObject:
   m_ObjectHideFlags: 0
