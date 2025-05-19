@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 89574509}
   - component: {fileID: 89574511}
   - component: {fileID: 89574510}
+  - component: {fileID: 89574512}
   m_Layer: 5
   m_Name: Tile 1
   m_TagString: Untagged
@@ -173,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -197,6 +198,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89574508}
   m_CullTransparentMesh: 1
+--- !u!114 &89574512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89574508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248d0d36badfb1bcf8c41c7e87847fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &121959101
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,10 +638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475e9b4acc5b850429cd449faf8c23ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSize: {x: 1, y: 1}
-  objTiles:
-  - {fileID: 684493389}
-  tileSize: 64
+  blocksRects: []
 --- !u!1 &684493388
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,11 +786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475e9b4acc5b850429cd449faf8c23ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSize: {x: 1, y: 2}
-  objTiles:
-  - {fileID: 793977240}
-  - {fileID: 1446491388}
-  tileSize: 64
+  blocksRects: []
 --- !u!1 &793977239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,12 +1182,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475e9b4acc5b850429cd449faf8c23ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSize: {x: 2, y: 2}
-  objTiles:
-  - {fileID: 89574509}
-  - {fileID: 1275565057}
-  - {fileID: 1624597806}
-  tileSize: 64
+  blocksRects:
+  - {fileID: 89574512}
+  - {fileID: 1275565060}
+  - {fileID: 1624597809}
 --- !u!1 &1189459153
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,7 +1236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1329,13 +1333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475e9b4acc5b850429cd449faf8c23ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSize: {x: 2, y: 2}
-  objTiles:
-  - {fileID: 1467586983}
-  - {fileID: 890556640}
-  - {fileID: 187857567}
-  - {fileID: 1426352266}
-  tileSize: 64
+  blocksRects: []
 --- !u!1 &1271640616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,6 +1420,7 @@ GameObject:
   - component: {fileID: 1275565057}
   - component: {fileID: 1275565059}
   - component: {fileID: 1275565058}
+  - component: {fileID: 1275565060}
   m_Layer: 5
   m_Name: Tile 2
   m_TagString: Untagged
@@ -1462,7 +1461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1486,6 +1485,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275565056}
   m_CullTransparentMesh: 1
+--- !u!114 &1275565060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275565056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248d0d36badfb1bcf8c41c7e87847fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1376098453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,6 +1907,7 @@ GameObject:
   - component: {fileID: 1624597806}
   - component: {fileID: 1624597808}
   - component: {fileID: 1624597807}
+  - component: {fileID: 1624597809}
   m_Layer: 5
   m_Name: Tile 3
   m_TagString: Untagged
@@ -1936,7 +1948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1960,6 +1972,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624597805}
   m_CullTransparentMesh: 1
+--- !u!114 &1624597809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624597805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248d0d36badfb1bcf8c41c7e87847fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1673477139
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,29 +5,14 @@ using UnityEngine;
 
 public class ItemPlacer : MonoBehaviour
 {
-    [SerializeField] private Vector2Int itemSize;
-
-    [SerializeField] private RectTransform[] objTiles;
-    [SerializeField] private int tileSize;
-    private bool[,] shapeMapper;
-
-    private void Awake()
+    [SerializeField] private List<ItemPlacerBlock> blocksRects;
+    public List<Rect> GetRects()
     {
-        shapeMapper = new bool[itemSize.x, itemSize.y];
-
-        for (var i = 0; i < objTiles.Length; i++)
+        var rectList = new List<Rect>();
+        foreach (var block in blocksRects)
         {
-            var coordX = (int) objTiles[i].position.x;
-            var coordY = (int) objTiles[i].position.y;
-            Debug.Log($"{objTiles[i].name} : {coordX / tileSize}, {coordY / tileSize}");
-            // shapeMapper[coordX / tileSize, coordY / tileSize] = true;
-
-            
+            rectList.Add(block.GetRect());
         }
-    }
-
-    private List<Transform> GetShape()
-    {
-        return null;
+        return rectList;
     }
 }

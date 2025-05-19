@@ -11,11 +11,13 @@ public class DraggableItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     private bool _isDragging = false;
     private bool _isRotating = false;
 
-    private Image targetVisual;
+    private ItemPlacer _placer;
+    private Image _targetVisual;
     
     private void Awake()
     {
-        targetVisual = GetComponentInChildren<Image>();
+        _targetVisual = GetComponentInChildren<Image>();
+        _placer = GetComponent<ItemPlacer>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -27,7 +29,7 @@ public class DraggableItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
             this.transform.DOMove(Input.mousePosition, .05f)
                 .SetEase(Ease.OutBounce);
 
-            targetVisual.raycastTarget = false;
+            _targetVisual.raycastTarget = false;
         }
     }
     
@@ -37,11 +39,10 @@ public class DraggableItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         {
             if (_isDragging) _isDragging = false;
 
-            targetVisual.raycastTarget = true;
+            _targetVisual.raycastTarget = true;
         }
     }
-
-
+    
     public void OnDrag(PointerEventData eventData)
     {
         if (!_isDragging)

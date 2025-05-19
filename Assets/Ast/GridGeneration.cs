@@ -14,7 +14,7 @@ public class GridGeneration : MonoBehaviour
     
     private Vector2Int _tileSize = Vector2Int.one * 64;
 
-    private void Awake()
+    private void Start()
     {
         HandleResize();
         
@@ -22,11 +22,14 @@ public class GridGeneration : MonoBehaviour
         gridGroup.cellSize = Vector2.one * _tileSize;
         
         var parentRoot = this.transform;
-
+        var inventory = GetComponent<InventoryController>();
+        inventory.InitializeGrid();
+        
         for (var i = 0; i < (width * height); i++)
         {
             var tileInstance = Instantiate(tilePrefab, parentRoot);
             tileInstance.InitializeTile(i / width, (i % width));
+            inventory.AddTile(tileInstance);
         }
     }
 

@@ -1,18 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InventoryController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Dictionary<Vector2Int, GridTile> _tiles;
+    public void InitializeGrid() => _tiles = new Dictionary<Vector2Int, GridTile>();
+    public void AddTile(GridTile t) => _tiles.Add(t.GetCoord(), t);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public static readonly UnityEvent<ItemPlacer> CheckOverlap = new();
 }
