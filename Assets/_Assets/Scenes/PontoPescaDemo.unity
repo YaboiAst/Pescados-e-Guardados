@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 102306075}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.125462, y: 10, z: -5.8495083}
+  m_LocalPosition: {x: -19.125462, y: 7.3199997, z: -5.8495083}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -288,7 +288,7 @@ Transform:
   m_GameObject: {fileID: 374557275}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1481314, y: 0.5845942, z: -0.109599024, w: 0.79012334}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.0000019073486, y: 0, z: 0.00000047683716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969a3dbd962ca9e40bed2fe866046690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minigameType: 2
+  _minigameType: 0
   _lootTable:
     LootDropItems:
     - Item: {fileID: 11400000, guid: 89559212a0b14e546bafc08c09d9496b, type: 2}
@@ -498,8 +498,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 510404903}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16641901, y: 0.5818946, z: -0.123129606, w: 0.78647476}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.2208611, y: 0.57189107, z: -0.16341007, w: 0.77295417}
+  m_LocalPosition: {x: -0.0000019073486, y: 0, z: 0.00000047683716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -598,7 +598,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 25.734083
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -639,8 +639,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566601860}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16641898, y: 0.581895, z: -0.123129666, w: 0.78647447}
-  m_LocalPosition: {x: -19.125462, y: 10, z: -5.8495083}
+  m_LocalRotation: {x: 0.22086148, y: 0.57188916, z: -0.16340949, w: 0.7729556}
+  m_LocalPosition: {x: -19.125462, y: 7.3199997, z: -5.8495083}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1152,7 +1152,7 @@ Transform:
   m_GameObject: {fileID: 825274016}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1278,7 +1278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969a3dbd962ca9e40bed2fe866046690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minigameType: 2
+  _minigameType: 1
   _lootTable:
     LootDropItems:
     - Item: {fileID: 11400000, guid: 89559212a0b14e546bafc08c09d9496b, type: 2}
@@ -2748,7 +2748,7 @@ Transform:
   m_GameObject: {fileID: 1494317879}
   serializedVersion: 2
   m_LocalRotation: {x: 0.1846959, y: 0.5788682, z: -0.13665226, w: 0.78238434}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.0000019073486, y: 0, z: 0.00000047683716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2972,7 +2972,7 @@ GameObject:
   - component: {fileID: 1818650153}
   - component: {fileID: 1818650156}
   - component: {fileID: 1818650155}
-  - component: {fileID: 1818650154}
+  - component: {fileID: 1818650157}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -2995,33 +2995,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 510404904}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1818650154
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1818650152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0
-  m_VerticalDamping: 0
-  m_ScreenX: 0.5
-  m_ScreenY: 0.55
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: 0
-  m_BiasY: 0
-  m_CenterOnActivate: 1
 --- !u!114 &1818650155
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -3088,6 +3061,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1818650157
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818650152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 0
+  m_LookaheadIgnoreY: 0
+  m_HorizontalDamping: 0.5
+  m_VerticalDamping: 0.5
+  m_ScreenX: 0.5
+  m_ScreenY: 0.4
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
+  m_SoftZoneWidth: 0.5
+  m_SoftZoneHeight: 0.5
+  m_BiasX: 0
+  m_BiasY: 0
+  m_CenterOnActivate: 1
 --- !u!1 &1966985107
 GameObject:
   m_ObjectHideFlags: 0

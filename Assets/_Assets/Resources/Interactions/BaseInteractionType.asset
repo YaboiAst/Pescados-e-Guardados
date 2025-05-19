@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220f5b3bdc8b364449791d04c2c6e237, type: 3}
   m_Name: BaseInteractionType
   m_EditorClassIdentifier: 
-  CompletedInteraction: Interacao feita com sucesso
+  CompletedInteraction: PESCANDO
   FailedInteraction: Interacao fracassada
   IsDefault: 0
