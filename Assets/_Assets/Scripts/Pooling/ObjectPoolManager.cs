@@ -21,8 +21,7 @@ public class ObjectPoolManager : MonoBehaviour
     {
         ParticleSystem,
         GameObjects,
-        SoundFX,
-        Other
+        SoundFX
     }
 
     public static PoolType PoolingType;
@@ -126,17 +125,10 @@ public class ObjectPoolManager : MonoBehaviour
         {
             case PoolType.ParticleSystem:
                 return _particleSystemsEmpty;
-                break;
             case PoolType.GameObjects:
                 return _gameObjectsEmpty;
-                break;
             case PoolType.SoundFX:
                 return _soundFXEmpty;
-                break;
-            case PoolType.Other:
-                Debug.Log("implementar parent custom");
-                return _particleSystemsEmpty;
-                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(poolType), poolType, null);
         }

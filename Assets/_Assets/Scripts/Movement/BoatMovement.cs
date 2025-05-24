@@ -9,12 +9,12 @@ public class BoatMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        Minigame.s_OnMinigameUpdated += MinigameUpdated;
+        Minigame.OnMinigameUpdated += MinigameUpdated;
     }
 
     private void OnDestroy()
     {
-        Minigame.s_OnMinigameUpdated -= MinigameUpdated;
+        Minigame.OnMinigameUpdated -= MinigameUpdated;
     }
 
 

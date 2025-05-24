@@ -20,13 +20,13 @@ public class InteractionManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Minigame.s_OnMinigameUpdated += MinigameUpdated;
+        Minigame.OnMinigameUpdated += MinigameUpdated;
     }
 
     private void OnDestroy()
     {
         Interactable.InteractablesInRangeChanged -= HandleInteractablesInRangeChanged;
-        Minigame.s_OnMinigameUpdated -= MinigameUpdated;
+        Minigame.OnMinigameUpdated -= MinigameUpdated;
     }
 
     private void MinigameUpdated(bool hasStarted)

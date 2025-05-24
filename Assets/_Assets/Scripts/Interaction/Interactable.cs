@@ -125,19 +125,19 @@ public class Interactable : MonoBehaviour
         SendInteractionComplete();
     }
 
-    private void HandleMinigameCompleted(MinigameResult result)
-    {
-        if (result == MinigameResult.Won)
-        {
-            CompleteIteraction();
-        }
-        else if (result == MinigameResult.Fail)
-        {
-            _timeInteracted = 0f;
-            s_interactablesInRange.Add(this);
-            InteractablesInRangeChanged?.Invoke(s_interactablesInRange.Any());
-        }
-    }
+    // private void HandleMinigameCompleted(MinigameResult result)
+    // {
+    //     if (result == MinigameResult.Won)
+    //     {
+    //         CompleteIteraction();
+    //     }
+    //     else if (result == MinigameResult.Fail)
+    //     {
+    //         _timeInteracted = 0f;
+    //         s_interactablesInRange.Add(this);
+    //         InteractablesInRangeChanged?.Invoke(s_interactablesInRange.Any());
+    //     }
+    // }
 
     public bool CheckConditions()
     {

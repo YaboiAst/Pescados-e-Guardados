@@ -15,7 +15,7 @@ MonoBehaviour:
   _displayName: Pexe A
   _description: 
   _rarity: 0
-  _gridSize: {x: 0, y: 0}
   _basePoints: 0
+  _fishPrefab: {fileID: 888690460718850693, guid: 438fae29b80e0e04eb23becc25022eef, type: 3}
   _icon: {fileID: 21300000, guid: a105a48bae5384b4cb0713da4b087e24, type: 3}
   _weightRange: {x: 0, y: 0}

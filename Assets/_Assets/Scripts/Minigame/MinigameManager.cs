@@ -1,4 +1,5 @@
 using System;
+using PedronsaDev.Console;
 using UnityEngine;
 
 public class MinigameManager : MonoBehaviour
@@ -17,6 +18,16 @@ public class MinigameManager : MonoBehaviour
             Instance = this;   
     }
 
+    #if UNITY_EDITOR
+    [Command("start_minigame","Starts a minigame using default settings")]
+    public void StartMinigame(MinigameType type)
+    {
+        StartMinigame(50, type, (MinigameResult result) =>
+        {
+            Debug.Log("Minigame Finished");
+        });
+    }
+  #endif
     public void StartMinigame(MinigameSettings settings, Action<MinigameResult> completeMinigame)
     {
         switch (settings.Type)
