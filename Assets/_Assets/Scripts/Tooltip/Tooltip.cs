@@ -96,16 +96,15 @@ public class Tooltip : MonoBehaviour
     {
         foreach (TooltipElementInfo info in infos)
         {
-            GameObject elementGO = ObjectPoolManager.SpawnGameObject(_elementPrefab, _elementsParent, Quaternion.identity);
-            TooltipElement element = elementGO.GetComponent<TooltipElement>();
+            TooltipElement element = ObjectPoolManager.SpawnGameObject(_elementPrefab, _elementsParent, Quaternion.identity).GetComponent<TooltipElement>();
             element.SetElementInfo(info);
         }
     }
 
     private void ReturnElements()
     {
-        foreach (Transform child in _elementsParent) 
-            ObjectPoolManager.ReturnObjectToPool(child.gameObject);
+        for (int i = _elementsParent.childCount - 1; i >= 0; i--) 
+            ObjectPoolManager.ReturnObjectToPool(_elementsParent.GetChild(i).gameObject); 
     }
     
 }

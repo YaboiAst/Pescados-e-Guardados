@@ -82,9 +82,6 @@ public class Interactable : MonoBehaviour
         if (WasFullyInteracted)
             return;
 
-        if (_timeToInteract == 0.0f)
-            CompleteIteraction();
-
         _timeInteracted += Time.deltaTime;
 
         if (WasFullyInteracted)

@@ -58,7 +58,7 @@ namespace PedronsaDev.Console.Components
 			float fontSize = m_Preferences.LogTextFontSize;
 			if (logMessage.Type == LogMessageType.Command)
 			{
-				logMessageText = logMessageText.Insert(0, $"@Console> ");
+				logMessageText = logMessageText.Insert(0, $"Console:> ");
 				fontSize += 2;
 			}
 

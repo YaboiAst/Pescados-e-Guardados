@@ -42,7 +42,7 @@ public class InteractionManager : MonoBehaviour
 
     private void HandleInteractablesInRangeChanged(bool obj)
     {
-        var nearest = Interactable.InteractablesInRange
+        Interactable nearest = Interactable.InteractablesInRange
             .OrderBy(t => Vector3.Distance(t.transform.position, transform.position))
             .FirstOrDefault();
 
@@ -64,7 +64,7 @@ public class InteractionManager : MonoBehaviour
             return;
         }
         
-        if (_currentInteractable != null && Input.GetKey(_currentInteractable.InteractionType.Hotkey))
+        if (_currentInteractable && Input.GetKey(_currentInteractable.InteractionType.Hotkey))
         {
             _currentInteractable.Interact();
             Interacting = true;

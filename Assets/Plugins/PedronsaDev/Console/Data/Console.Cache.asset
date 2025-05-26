@@ -56,6 +56,16 @@ MonoBehaviour:
       Parameters:
       - Data: 005a53797374656d2e537472696e672c206d73636f726c69622c2056657273696f6e3d342e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d62373761356335363139333465303839
       Flags: 24
+  - Name: discover_all_fishes
+    Description: Discovers all fishes and add all diary entries
+    TargetType: 0
+    Group: Default
+    SerializableMethod:
+      Type:
+        Data: 0053466973684d616e616765722c20417373656d626c792d4353686172702c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+      MethodName: DiscoverAllFishes
+      Parameters: []
+      Flags: 20
   - Name: get_active_scene
     Description: Gets the name and index of the current active scene
     TargetType: 0
@@ -190,6 +200,16 @@ MonoBehaviour:
       Parameters:
       - Data: 005953797374656d2e496e7433322c206d73636f726c69622c2056657273696f6e3d342e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d62373761356335363139333465303839
       Flags: 24
+  - Name: pause_game
+    Description: Pauses the game
+    TargetType: 0
+    Group: Core
+    SerializableMethod:
+      Type:
+        Data: 006b506564726f6e73614465762e436f6e736f6c652e45787472612e436f7265436f6d6d616e64732c20536d617274436f6e736f6c652c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+      MethodName: PauseGame
+      Parameters: []
+      Flags: 24
   - Name: quit
     Description: Quits the application
     TargetType: 0
@@ -208,6 +228,16 @@ MonoBehaviour:
       Type:
         Data: 006c506564726f6e73614465762e436f6e736f6c652e45787472612e5363656e65436f6d6d616e64732c20536d617274436f6e736f6c652c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
       MethodName: ReloadActiveScene
+      Parameters: []
+      Flags: 24
+  - Name: resume_game
+    Description: Resumes the game
+    TargetType: 0
+    Group: Core
+    SerializableMethod:
+      Type:
+        Data: 006b506564726f6e73614465762e436f6e736f6c652e45787472612e436f7265436f6d6d616e64732c20536d617274436f6e736f6c652c2056657273696f6e3d302e302e302e302c2043756c747572653d6e65757472616c2c205075626c69634b6579546f6b656e3d6e756c6c
+      MethodName: ResumeGame
       Parameters: []
       Flags: 24
   - Name: set_active_scene

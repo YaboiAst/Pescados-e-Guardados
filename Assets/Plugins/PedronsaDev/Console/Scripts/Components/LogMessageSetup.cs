@@ -31,12 +31,14 @@ namespace PedronsaDev.Console.Components
 
 		public void EnableAltText()
 		{
-			AltTextGameObject.SetActive(true);
+			if(m_AltText.text.Length > 0)
+				AltTextGameObject.SetActive(true);
 		}
 		
 		public void DisableAltText()
 		{
-			AltTextGameObject.SetActive(false);
+			if(m_AltText.text.Length > 0)
+				AltTextGameObject.SetActive(false);
 		}
 
 		public void HighlightText()

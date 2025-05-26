@@ -13,8 +13,8 @@ public class Minigame : MonoBehaviour
     [SerializeField] protected RectTransform _progressBarBackground;
     [SerializeField] protected Image _durationTimeBar;
 
-    private static Action<MinigameResult> minigameComplete;
-    public static Action<bool> OnMinigameUpdated;
+    private static event Action<MinigameResult> OnMinigameComplete;
+    public static event Action<bool> OnMinigameUpdated;
     
     protected float _speed = 500f;
     protected float _targetAreaSize = 10;
@@ -82,7 +82,7 @@ public class Minigame : MonoBehaviour
         
         _progressAmount = 0;
         
-        minigameComplete = completeMinigame;
+        OnMinigameComplete = completeMinigame;
         
         SetProgressAmount(0);
         
@@ -111,7 +111,7 @@ public class Minigame : MonoBehaviour
     protected virtual void CompleteMinigame()
     {
         ResetUI();
-        minigameComplete?.Invoke(MinigameResult.Won);
+        OnMinigameComplete?.Invoke(MinigameResult.Won);
         OnMinigameUpdated?.Invoke(false);
         _canvas.gameObject.SetActive(false);
     }

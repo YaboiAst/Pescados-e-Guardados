@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -241,4 +242,10 @@ public class ObjectPoolManager : MonoBehaviour
         }
     }
     
+    public static IEnumerator ReturnObjectToPool(GameObject obj, float time, PoolType poolType = PoolType.GameObjects)
+    {
+        yield return new WaitForSeconds(time);
+
+        ReturnObjectToPool(obj, poolType);
+    }
 }

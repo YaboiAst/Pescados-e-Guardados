@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Compass : MonoBehaviour
@@ -12,6 +13,12 @@ public class Compass : MonoBehaviour
 
     private float _currentRotation;
     private float _velocity;
+
+    private void Start()
+    {
+        if (!_playerCamera)
+            _playerCamera = Camera.main.transform;
+    }
 
     private void Update()
     {

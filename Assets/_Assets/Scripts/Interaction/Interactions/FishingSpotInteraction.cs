@@ -5,7 +5,7 @@ public class FishingSpotInteraction : MonoBehaviour
     [SerializeField] private MinigameType _minigameType;
     [SerializeField] private FishLootTable _lootTable;
 
-    private FishSO _currentFish;
+    private FishData _currentFish;
 
     private void OnValidate() => _lootTable.ValidateTable();
 
@@ -13,5 +13,6 @@ public class FishingSpotInteraction : MonoBehaviour
     {
         _lootTable.ValidateTable();
         FishingManager.StartFishing(ref _lootTable);
+        Debug.Log("I(IIIIIII)");
     }
 }

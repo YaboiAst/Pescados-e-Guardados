@@ -1,5 +1,5 @@
 [System.Serializable]
-public class FishLootTable : GenericLootDropTable<FishItem,FishSO>
+public class FishLootTable : GenericLootDropTable<FishItem,FishData>
 {
 
 }

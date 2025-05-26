@@ -7,9 +7,12 @@ public class FishInfoUI : MonoBehaviour
     [SerializeField] private Image _fishIcon;
     [SerializeField] private TMP_Text _fishProbabilityText;
 
-    public void SetupFishInfo(FishItem fish)
+    public void SetupFishInfo(FishItem fish, bool isDiscovered)
     {
         _fishIcon.sprite = fish.Item.Icon;
+
+        _fishIcon.color = isDiscovered ? Color.white : Color.black;
+
         _fishProbabilityText.SetText(fish.ProbabilityPercent.ToString("F2") + "%");
 
         Color textColor = Color.white;

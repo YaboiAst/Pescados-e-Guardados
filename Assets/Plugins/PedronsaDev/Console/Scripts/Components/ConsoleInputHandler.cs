@@ -27,7 +27,6 @@ namespace PedronsaDev.Console.Components
 		[SerializeField] private KeyCode m_CopyPreviousLogMessageKeyCode = KeyCode.DownArrow;
 		[SerializeField] private KeyCode m_SelectParameterKeyCode = KeyCode.LeftShift;
 #endif
-
 		public event Action OnOpenCloseInput;
 		public event Action OnAutocompleteInput;
 		public event Action OnCopyNextLogInput;

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace PedronsaDev.Console.Components
@@ -156,7 +157,7 @@ namespace PedronsaDev.Console.Components
 			Command command = FindCommandByText(inputParts[0]);
 
 			// create and log the log message
-			LogMessage logMessage = new LogMessage(inputText,"Not Implemented" ,LogMessageType.Command);
+			LogMessage logMessage = new LogMessage(inputText,"" ,LogMessageType.Command);
 			Console.LogMessagesHistory.Insert(0, logMessage);
 			Console.LogCommand(logMessage);
 
@@ -228,7 +229,7 @@ namespace PedronsaDev.Console.Components
 			}
 			else
 			{
-				Console.LogError($"Smart Error: Command '{inputText}' could not be found.");
+				Console.LogError($"Error: Command '{inputText}' could not be found.");
 			}
 
 			Console.Reset();
@@ -403,6 +404,11 @@ namespace PedronsaDev.Console.Components
 				m_canvasGroup.interactable = true;
 				m_canvasGroup.blocksRaycasts = true;
 
+				if (GameManager.Instance)
+					GameManager.Instance.PauseGame();
+				else
+					Console.LogWarning("GameManager Missing");
+				
 				OnActivate?.Invoke();
 			}
 			else
@@ -413,6 +419,12 @@ namespace PedronsaDev.Console.Components
 				m_LogMessageCopiedIndex = -1;
 				m_canvasGroup.interactable = false;
 				m_canvasGroup.blocksRaycasts = false;
+				
+				if (GameManager.Instance)
+					GameManager.Instance.ResumeGame();
+				else
+					Console.LogWarning("GameManager Missing");
+				
 				OnDeactivate?.Invoke();
 			}
 		}

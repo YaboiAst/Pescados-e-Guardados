@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 
@@ -115,7 +116,9 @@ namespace PedronsaDev.Console
 		/// <param name="altMessage"></param>
 		public static void Log(string message)
 		{
-			var logMessage = new LogMessage(message,"Not Implemented", LogMessageType.Log);
+			StackTrace stackTrace = new System.Diagnostics.StackTrace();
+			
+			var logMessage = new LogMessage(message,stackTrace.ToString(), LogMessageType.Log);
 			LogMessageReceived?.Invoke(logMessage);
 			
 		}
@@ -127,7 +130,8 @@ namespace PedronsaDev.Console
 		/// <param name="altMessage"></param>
 		public static void LogWarning(string message)
 		{
-			var logMessage = new LogMessage(message,"Not Implemented", LogMessageType.Warning);
+			StackTrace stackTrace = new System.Diagnostics.StackTrace();
+			var logMessage = new LogMessage(message,stackTrace.ToString(), LogMessageType.Warning);
 			LogMessageReceived?.Invoke(logMessage);
 		}
 
@@ -138,7 +142,9 @@ namespace PedronsaDev.Console
 		/// <param name="altMessage"></param>
 		public static void LogError(string message)
 		{
-			var logMessage = new LogMessage(message,"Not Implemented", LogMessageType.Error);
+			StackTrace stackTrace = new System.Diagnostics.StackTrace();
+			
+			var logMessage = new LogMessage(message,stackTrace.ToString(), LogMessageType.Error);
 			LogMessageReceived?.Invoke(logMessage);
 		}
 

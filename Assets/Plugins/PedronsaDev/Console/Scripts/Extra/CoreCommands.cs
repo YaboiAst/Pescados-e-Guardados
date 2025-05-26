@@ -33,5 +33,19 @@ namespace PedronsaDev.Console.Extra
 			Debug.LogWarning("This is a Unity Engine Warning Log");
 			Debug.LogError("This is a Unity Engine Error Log");
 		}
+
+		[Command("pause_game", "Pauses the game")]
+		public static void PauseGame()
+		{
+			GameManager.Instance.PauseGame();
+			Console.Log("Game Paused");
+		}
+		
+		[Command("resume_game", "Resumes the game")]
+		public static void ResumeGame()
+		{
+			GameManager.Instance.ResumeGame();
+			Console.Log("Game Resumed");
+		}
 	}
 }
