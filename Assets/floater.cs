@@ -9,6 +9,7 @@ public class floater : MonoBehaviour
     public float depthBeforeSubmerged = 1f;
     public float displacementAmount = 3f;
     public int floaterCount = 1;
+    
 
     private void FixedUpdate()
     {
