@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,46 +11,33 @@ public class DiaryUI : CanvasController
     [Header("Selection Settings")]
     [SerializeField] private TMP_Text _entryName;
     [SerializeField] private TMP_Text _entryDescription;
+    [SerializeField] private TMP_Text _entryHighestWeight;
+    [SerializeField] private TMP_Text _entryTimesCaught;
     [SerializeField] private Image _entryImage;
-
-    private readonly Dictionary<string, DiaryEntryUI> _entryUIs = new Dictionary<string, DiaryEntryUI>();
-
+    
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+            ToggleDiary();
+    }
+    
     private void Start()
     {
-        foreach (FishData fish in FishManager.AllFishes)
+        DiaryManager.Instance.OnEntriesLoaded += BindDatas;
+    }
+
+    private void BindDatas(HashSet<EntryData> entries)
+    {
+        foreach (EntryData data in entries)
         {
-            GameObject entryObj = Instantiate(_entryPrefab, _contentParent);
-            DiaryEntryUI entryUI = entryObj.GetComponent<DiaryEntryUI>();
-
-            bool discovered = DiaryManager.Instance.IsDiscovered(fish);
-
-            entryUI.SetEntry(fish, discovered);
-            _entryUIs[fish.UniqueID] = entryUI;
+            DiaryEntryUI entry = Instantiate(_entryPrefab, _contentParent).GetComponent<DiaryEntryUI>();
+            entry.BindData(data);
         }
-        
-        CloseDiary();
-        
-        DiaryManager.Instance.OnFishDiscovered += UpdateEntry;
-    }
-
-    private void OnDestroy()
-    {
-        DiaryManager.Instance.OnFishDiscovered -= UpdateEntry;
-    }
-
-    private void UpdateEntry(FishData fish)
-    {
-        if (_entryUIs.TryGetValue(fish.UniqueID, out DiaryEntryUI entryUI))
-            entryUI.SetEntry(fish, true);
     }
 
     private void OpenDiary()
     {
         ShowCanvas();
-
-        DiaryEntryUI entry = _entryUIs.FirstOrDefault(t => DiaryManager.Instance.IsDiscovered(t.Value.Fish)).Value;
-        if (entry)
-            SelectEntry(entry.Fish);
     }
 
     private void CloseDiary()
@@ -67,16 +53,19 @@ public class DiaryUI : CanvasController
             OpenDiary();
     }
 
-    public void SelectEntry(FishData fish)
+    public void SelectEntry(EntryData entry)
     {
-        _entryImage.sprite = fish.Icon;
-        _entryName.text = fish.DisplayName;
-        _entryDescription.text = fish.Description;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-            ToggleDiary();
+        _entryImage.sprite = entry.FishData.Icon;
+        _entryName.text =  entry.FishData.DisplayName;
+        _entryDescription.text =  entry.FishData.Description;
+        _entryTimesCaught.text = $"Times Caught: {entry.TimesCaught}";
+        if (entry.HighestWeight > 1f)
+        {
+            _entryHighestWeight.text = $"Heaviest Caught: {entry.HighestWeight}kg";
+        }
+        else
+        {
+            _entryHighestWeight.text = $"Heaviest Caught: {entry.HighestWeight * 100}g";
+        }
     }
 }

@@ -14,7 +14,10 @@ public class FishManager : MonoBehaviour
     [Command("discover_all_fishes", "Discovers all fishes and add all diary entries")]
     public void DiscoverAllFishes()
     {
-        foreach (FishData fish in AllFishes) 
+        foreach (FishData fishData in AllFishes)
+        {
+            Fish fish = new Fish(fishData);
             DiaryManager.Instance.RegisterFish(fish);
+        }
     }
 }

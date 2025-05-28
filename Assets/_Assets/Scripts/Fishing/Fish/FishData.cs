@@ -13,8 +13,10 @@ public class FishData : ScriptableObject
     [SerializeField] private float _basePoints;
     [SerializeField] private GameObject _fishPrefab;
     [SerializeField] private Sprite _icon;
-    [MinMaxSlider(0.0f, 100.0f)]
+    [MinMaxSlider(0.1f, 10.0f)]
     [SerializeField] private Vector2 _weightRange;
+    //[EnumFlags]
+    [SerializeField] private FishLocation _possibleLocations;
     
     public string UniqueID => _uniqueID;
     public string DisplayName => _displayName;
@@ -25,6 +27,7 @@ public class FishData : ScriptableObject
     public Sprite Icon => _icon;
     public float MinWeight => _weightRange.x;
     public float MaxWeight => _weightRange.y;
+    
     
      #if UNITY_EDITOR
     private void OnValidate()
@@ -38,4 +41,43 @@ public class FishData : ScriptableObject
         }
     }
     #endif
+    
+    // public bool ContainsLocation(FishLocation location)
+    // {
+    //     return (_possibleLocations & location) == location && location != FishLocation.None;
+    // }
+    //
+    // public FishLocation GetRandomLocation()
+    // {
+    //     Array values = System.Enum.GetValues(typeof(FishLocation));
+    //     List<FishLocation> possible = new System.Collections.Generic.List<FishLocation>();
+    //     foreach (FishLocation loc in values)
+    //     {
+    //         if (loc != FishLocation.None && (_possibleLocations & loc) == loc)
+    //             possible.Add(loc);
+    //     }
+    //     
+    //     return possible.Count == 0 ? FishLocation.None : possible[Random.Range(0, possible.Count)];
+    // }
+}
+
+// public enum FishLocation
+// {
+//     None = 0,
+//     Ocean = 1 << 0,
+//     Shallow = 1 << 1,
+//     Mangrove = 1 << 2,
+//     Volcanic = 1 << 3,
+//     Ice = 1 << 4,
+//     Abyss = 1 << 5
+// }
+
+public enum FishLocation
+{
+    Ocean,
+    Shallow, 
+    Mangrove,
+    Volcanic,
+    Ice,
+    Abyss
 }

@@ -61,7 +61,6 @@ GameObject:
   - component: {fileID: 3961490218701841238}
   - component: {fileID: 1021362464819448787}
   - component: {fileID: 8121471871489567792}
-  - component: {fileID: 3129453382776237672}
   m_Layer: 5
   m_Name: Probabilities Background
   m_TagString: Untagged
@@ -152,18 +151,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!225 &3129453382776237672
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3461112440083530109}
-  m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
 --- !u!1 &6536532439263458559
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +262,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6536532439263458559}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0

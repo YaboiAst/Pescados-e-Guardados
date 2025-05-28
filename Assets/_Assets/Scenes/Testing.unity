@@ -495,6 +495,7 @@ MonoBehaviour:
       ProbabilityPercent: 11.111111
       ProbabilityRangeFrom: 8
       ProbabilityRangeTo: 9
+  _fishLocationType: 0
 --- !u!4 &429853511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5605677175499696579, guid: 5a467b2ff13595244bf0e8b2d1089302, type: 3}
@@ -690,6 +691,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8665868188385745204, guid: a47a6f8c039782a49b353f5052abe0e6, type: 3}
   m_PrefabInstance: {fileID: 5507589747457973364}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &878566050 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4338292050794154348, guid: 0d4701e654311c1479ae3682a3838847, type: 3}
+  m_PrefabInstance: {fileID: 7617266998568570567}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &888466937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -822,6 +834,7 @@ MonoBehaviour:
       ProbabilityPercent: 12.5
       ProbabilityRangeFrom: 7
       ProbabilityRangeTo: 8
+  _fishLocationType: 0
 --- !u!4 &888466942 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5605677175499696579, guid: 5a467b2ff13595244bf0e8b2d1089302, type: 3}
@@ -1180,6 +1193,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b078c25882fbb14b82fafdec9f46193, type: 3}
+--- !u!114 &1129519389 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5734202530653708866, guid: 0d4701e654311c1479ae3682a3838847, type: 3}
+  m_PrefabInstance: {fileID: 7617266998568570567}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1492085267
 GameObject:
   m_ObjectHideFlags: 0
@@ -2246,6 +2270,7 @@ MonoBehaviour:
       ProbabilityPercent: 100
       ProbabilityRangeFrom: 0
       ProbabilityRangeTo: 1
+  _fishLocationType: 0
 --- !u!4 &2073147707 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5605677175499696579, guid: 5a467b2ff13595244bf0e8b2d1089302, type: 3}
@@ -2452,7 +2477,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1099156932904557318, guid: 2b20cd7c29aa0a84090698840ab0d43b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 1099156932904557318, guid: 2b20cd7c29aa0a84090698840ab0d43b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2516,7 +2541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5667237647985341256, guid: 2b20cd7c29aa0a84090698840ab0d43b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 5667237647985341256, guid: 2b20cd7c29aa0a84090698840ab0d43b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2603,6 +2628,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1041462487}
     m_Modifications:
+    - target: {fileID: 940378449742803049, guid: 0d4701e654311c1479ae3682a3838847, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2630092886059368567, guid: 0d4701e654311c1479ae3682a3838847, type: 3}
       propertyPath: m_Name
       value: '[CANVAS] Diary'
@@ -2647,6 +2676,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5786409241319234698, guid: 0d4701e654311c1479ae3682a3838847, type: 3}
+      propertyPath: _entryTimesCaught
+      value: 
+      objectReference: {fileID: 878566050}
+    - target: {fileID: 5786409241319234698, guid: 0d4701e654311c1479ae3682a3838847, type: 3}
+      propertyPath: _entryHighestWeight
+      value: 
+      objectReference: {fileID: 1129519389}
     - target: {fileID: 7220843201925903076, guid: 0d4701e654311c1479ae3682a3838847, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

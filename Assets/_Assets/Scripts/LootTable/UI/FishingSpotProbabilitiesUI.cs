@@ -23,13 +23,12 @@ public class FishingSpotProbabilitiesUI : CanvasController
 
     public void GenerateUI(FishLootTable fishes)
     {
+        ShowCanvas();        
         foreach (FishItem fish in fishes.LootDropItems)
         {
             FishInfoUI fishInfo = ObjectPoolManager.SpawnGameObject(_probabilityPrefab, _prefabParent, quaternion.identity).GetComponent<FishInfoUI>();
             fishInfo.SetupFishInfo(fish, DiaryManager.Instance.IsDiscovered(fish.Item));
         }
-
-        ShowCanvas();        
     }
 
     public void ClearUI()

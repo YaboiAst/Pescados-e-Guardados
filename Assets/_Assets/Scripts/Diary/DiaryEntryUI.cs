@@ -1,7 +1,5 @@
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class DiaryEntryUI : MonoBehaviour
@@ -10,16 +8,16 @@ public class DiaryEntryUI : MonoBehaviour
     [SerializeField] private TMP_Text _nameText;
     private Button _button;
     private DiaryUI _diaryUI;
-    public FishData Fish { get; private set; }
+    private EntryData _entryData;
 
-    public void SetEntry(FishData fish, bool discovered)
+    private void UpdateEntry()
     {
-        _icon.sprite = fish.Icon;
-        Fish = fish;
-        if (discovered)
+        _icon.sprite = _entryData.FishData.Icon;
+        
+        if (_entryData.IsDiscovered)
         {
             _icon.color = Color.white;
-            _nameText.text = Fish.DisplayName;
+            _nameText.text = _entryData.FishData.DisplayName;
             _button.interactable = true;
             
         }
@@ -31,6 +29,13 @@ public class DiaryEntryUI : MonoBehaviour
         }
     }
 
+    public void BindData(EntryData data)
+    {
+        _entryData = data;
+        _entryData.OnEntryUpdated += UpdateEntry;
+        UpdateEntry();
+    }
+
     private void OnEnable()
     {
         _button = GetComponent<Button>();
@@ -38,8 +43,5 @@ public class DiaryEntryUI : MonoBehaviour
         _diaryUI = GetComponentInParent<DiaryUI>();
     }
 
-    private void SelectEntry()
-    {
-        _diaryUI.SelectEntry(Fish);
-    }
+    private void SelectEntry() => _diaryUI.SelectEntry(_entryData);
 }

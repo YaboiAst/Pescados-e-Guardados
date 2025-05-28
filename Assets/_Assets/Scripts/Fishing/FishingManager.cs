@@ -13,7 +13,6 @@ public class FishingManager
         MinigameManager.Instance.StartMinigame(50, MinigameType.Circle, OnMinigameComplete);
         
         FishingSpotProbabilitiesUI.Instance.GenerateUI(CurrentLootTable);
-        Debug.Log("NNNNNNNNN");
     }
     
     private static void OnMinigameComplete(MinigameResult result)
@@ -21,7 +20,8 @@ public class FishingManager
         if (result == MinigameResult.Won)
         {
             Debug.Log($"Voce pescou um {CurrentFish.Item.DisplayName} de raridade {CurrentFish.Item.Rarity}");
-            DiaryManager.Instance.RegisterFish(CurrentFish.Item);
+            Fish fish = new Fish(CurrentFish.Item);
+            DiaryManager.Instance.RegisterFish(fish);
         }
         else
         {
