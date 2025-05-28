@@ -8,6 +8,7 @@ public class Fish
     public float Weight { get; private set; }
     public float Points { get; private set; }
     public DateTime TimeCaught { get; private set; }
+    
     public FishLocation LocationCaught { get; private set; }
 
     public Fish(FishData fishData)
@@ -15,7 +16,7 @@ public class Fish
         FishData = fishData;
         Weight = (float)Math.Round(Random.Range(fishData.MinWeight, fishData.MaxWeight), 1);
         Points = fishData.BasePoints;
-        TimeCaught = System.DateTime.Now ;
+        TimeCaught = System.DateTime.Now;
     }
 }
 

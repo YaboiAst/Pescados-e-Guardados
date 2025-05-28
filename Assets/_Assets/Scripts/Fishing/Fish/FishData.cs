@@ -1,5 +1,6 @@
 using UnityEngine;
 using NaughtyAttributes;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = "Fish/New Fish")]
 public class FishData : ScriptableObject
@@ -16,7 +17,7 @@ public class FishData : ScriptableObject
     [MinMaxSlider(0.1f, 10.0f)]
     [SerializeField] private Vector2 _weightRange;
     //[EnumFlags]
-    [SerializeField] private FishLocation _possibleLocations;
+    [SerializeField] private FishLocation _location;
     
     public string UniqueID => _uniqueID;
     public string DisplayName => _displayName;
@@ -27,6 +28,7 @@ public class FishData : ScriptableObject
     public Sprite Icon => _icon;
     public float MinWeight => _weightRange.x;
     public float MaxWeight => _weightRange.y;
+    public FishLocation Location => _location;
     
     
      #if UNITY_EDITOR

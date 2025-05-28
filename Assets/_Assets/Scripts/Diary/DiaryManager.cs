@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -20,13 +21,15 @@ public class DiaryManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
         foreach (FishData fishData in FishManager.AllFishes)
         {
             EntryData entry = new EntryData(fishData);
             _allEntries.Add(entry);
         }
+        
+        yield return null;
         
         OnEntriesLoaded?.Invoke(_allEntries);
     }

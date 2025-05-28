@@ -14,6 +14,7 @@ public class Tooltip : MonoBehaviour
     [SerializeField] private GameObject _elementPrefab;
     [SerializeField] private LayoutElement _layoutElement;
     [SerializeField] private int _characterWrapLimit;
+    [SerializeField] private RectTransform _avoidPanel;
     
     private RectTransform _rectTransform;
 
@@ -27,27 +28,42 @@ public class Tooltip : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector2 position = Input.mousePosition;
+        Vector2 mousePosition = Input.mousePosition;
         
-        float pivotX = position.x / Screen.width;
-        float pivotY = position.y / Screen.height;
-        
-        float finalPivotX = 0f;
-        float finalPivotY = 0f;
+        if (IsMouseOverRect(_avoidPanel, mousePosition))
+        {
+            Vector3[] worldCorners = new Vector3[4];
+            _avoidPanel.GetWorldCorners(worldCorners);
 
-        if (pivotX < 0.75)
-            finalPivotX = -0.1f;
+            float panelCenterX = (worldCorners[0].x + worldCorners[2].x) * 0.5f;
+            float clampedY = Mathf.Clamp(mousePosition.y, worldCorners[0].y, worldCorners[1].y);
+
+            bool panelOnLeft = panelCenterX < Screen.width / 2f;
+
+            if (panelOnLeft)
+            {
+                _rectTransform.pivot = new Vector2(0, 0.5f); // left center
+                _rectTransform.position = new Vector3(worldCorners[2].x, clampedY, 0);
+            }
+            else
+            {
+                _rectTransform.pivot = new Vector2(1, 0.5f); // right center
+                _rectTransform.position = new Vector3(worldCorners[0].x, clampedY, 0);
+            }
+        }
         else
-            finalPivotX = 1.01f;
+        {
+            float pivotX = mousePosition.x / Screen.width;
+            float pivotY = mousePosition.y / Screen.height;
 
-        if (pivotY < 0.75) 
-            finalPivotY = 0;
-        else
-            finalPivotY = 1;
+            _rectTransform.pivot = new Vector2(pivotX < 0.50f ? -0.1f : 1.01f, pivotY < 0.75f ? 0f : 1f);
+            _rectTransform.position = mousePosition;
+        }
+    }
 
-        _rectTransform.pivot = new Vector2(finalPivotX, finalPivotY);
-        
-        _rectTransform.transform.position = position;
+    private bool IsMouseOverRect(RectTransform rect, Vector2 screenPosition)
+    {
+        return RectTransformUtility.RectangleContainsScreenPoint(rect, screenPosition, null);
     }
 
     public void SetInfo(TooltipInfo info)
