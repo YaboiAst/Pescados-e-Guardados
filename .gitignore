@@ -72,3 +72,40 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+Assets/_Assets/Models/barco/Textures/Barquinho_objetos_mtl_Roughness.png.meta
+Assets/_Assets/Models/barco/Textures/Barquinho_objetos_mtl_Roughness.png
+Assets/_Assets/Models/barco/Textures/Barquinho_objetos_mtl_Metallic.png.meta
+Assets/_Assets/Models/barco/Textures/Barquinho_objetos_mtl_Metallic.png
+Assets/_Assets/Models/barco/Textures/Barquinho_objetos_mtl_BaseColor.png.meta
+Assets/_Assets/Models/barco/Textures/Barquinho_objetos_mtl_BaseColor.png
+Assets/_Assets/Models/barco/Textures/Barquinho_madeira_mtl_Roughness.png.meta
+Assets/_Assets/Models/barco/Textures/Barquinho_madeira_mtl_Roughness.png
+Assets/_Assets/Models/barco/Textures/Barquinho_madeira_mtl_Metallic.png.meta
+Assets/_Assets/Models/barco/Textures/Barquinho_madeira_mtl_Metallic.png
+Assets/_Assets/Models/barco/Textures/Barquinho_madeira_mtl_BaseColor.png.meta
+Assets/_Assets/Models/barco/Textures/Barquinho_madeira_mtl_BaseColor.png
+Assets/_Assets/Models/barco/Textures/Barquinho_casco_e_janela_mtl_Roughness.png.meta
+Assets/_Assets/Models/barco/Textures/Barquinho_casco_e_janela_mtl_Roughness.png
+Assets/_Assets/Models/barco/Textures/Barquinho_casco_e_janela_mtl_Metallic.png.meta
+Assets/_Assets/Models/barco/Textures/Barquinho_casco_e_janela_mtl_Metallic.png
+Assets/_Assets/Models/barco/Textures/Barquinho_casco_e_janela_mtl_BaseColor.png.meta
+Assets/_Assets/Models/barco/Textures/Barquinho_casco_e_janela_mtl_BaseColor.png
+Assets/_Assets/Models/barco/Textures/Barquinho_cabine_Roughness.png.meta
+Assets/_Assets/Models/barco/Textures/Barquinho_cabine_Roughness.png
+Assets/_Assets/Models/barco/Textures/Barquinho_cabine_Metallic.png.meta
+Assets/_Assets/Models/barco/Textures/Barquinho_cabine_Metallic.png
+Assets/_Assets/Models/barco/Textures/Barquinho_cabine_BaseColor.png.meta
+Assets/_Assets/Models/barco/Textures/Barquinho_cabine_BaseColor.png
+Assets/_Assets/Models/barco/Textures.meta
+Assets/_Assets/Models/barco/Materials/objetos_mtl.mat.meta
+Assets/_Assets/Models/barco/Materials/objetos_mtl.mat
+Assets/_Assets/Models/barco/Materials/madeira_mtl.mat.meta
+Assets/_Assets/Models/barco/Materials/madeira_mtl.mat
+Assets/_Assets/Models/barco/Materials/casco e janela_mtl.mat.meta
+Assets/_Assets/Models/barco/Materials/casco e janela_mtl.mat
+Assets/_Assets/Models/barco/Materials/cabine.mat.meta
+Assets/_Assets/Models/barco/Materials/cabine.mat
+Assets/_Assets/Models/barco/Materials.meta
+Assets/_Assets/Models/barco/barco_fbx.fbx.meta
+Assets/_Assets/Models/barco/barco_fbx.fbx
+Assets/_Assets/Models/barco.meta
