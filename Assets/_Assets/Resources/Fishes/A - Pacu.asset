@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54af0f2288003894d87bd60b5594db90, type: 3}
-  m_Name: FishA
+  m_Name: A - Pacu
   m_EditorClassIdentifier: 
   _uniqueID: 5b0fbc3f-9131-49f6-a944-6b6b6f1c0175
   _displayName: Pexe A
