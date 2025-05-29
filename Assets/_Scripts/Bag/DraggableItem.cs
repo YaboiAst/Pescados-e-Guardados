@@ -40,6 +40,13 @@ public class DraggableItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
             if (_isDragging) _isDragging = false;
 
             _targetVisual.raycastTarget = true;
+            if (eventData.pointerEnter is null) return;
+            if (eventData.pointerEnter.gameObject.CompareTag("Grid"))
+            {
+                transform.position = _placer.GetRoot().position;
+                _placer.GetRoot().position = transform.position;
+                _targetVisual.transform.position = transform.position;
+            }
         }
     }
     
@@ -48,7 +55,7 @@ public class DraggableItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         if (!_isDragging)
             return;
         
-        this.transform.position = Input.mousePosition;
+        this._targetVisual.transform.position = Input.mousePosition;
     }
     
     private void Update()
@@ -66,7 +73,12 @@ public class DraggableItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     private void RotateOnce()
     {
         _isRotating = true;
-        this.transform.DORotate(Vector3.forward * (-90), .1f, RotateMode.LocalAxisAdd)
-            .OnComplete(() => _isRotating = false);
+        this._targetVisual.transform.DORotate(Vector3.forward * (-90), .1f, RotateMode.LocalAxisAdd)
+            .OnComplete(() =>
+            {
+                _isRotating = false;
+                InventoryController.CheckOverlap?.Invoke(_placer);
+            });
+        _placer.GetRoot().Rotate(Vector3.forward, -90);
     }
 }

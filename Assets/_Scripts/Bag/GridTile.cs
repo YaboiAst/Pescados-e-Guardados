@@ -18,6 +18,7 @@ public class GridTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         _coord = new Vector2Int(xIndex, yIndex);
         InventoryController.CheckOverlap.AddListener(CheckOverlap);
+        InventoryController.ClearGrid.AddListener(ClearTile);
         
         _tileVisual = GetComponent<Image>();
         defaultColor = _tileVisual.color;
@@ -42,17 +43,32 @@ public class GridTile : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
     }
 
+    private void ClearTile()
+    {
+        _tileVisual.color = defaultColor;
+    }
+    
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (eventData.dragging)
+        if (!eventData.dragging) return;
+        
+        var item = eventData.pointerDrag.GetComponent<ItemPlacer>();
+        if (rectT is null)
         {
-            var item = eventData.pointerDrag.GetComponent<ItemPlacer>();
-            InventoryController.CheckOverlap?.Invoke(item);
+            rectT = GetComponent<RectTransform>();
+            _gridRect = new Rect(rectT.position.x, rectT.position.y, rectT.rect.width, rectT.rect.height);
         }
+        
+        // Snap to grid
+        item.SnapToGrid(this.rectT);
+        
+        // Overlap check
+        InventoryController.CheckOverlap?.Invoke(item);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        return;
+        if (!eventData.dragging) return;
+        InventoryController.ClearGrid?.Invoke();
     }
 }

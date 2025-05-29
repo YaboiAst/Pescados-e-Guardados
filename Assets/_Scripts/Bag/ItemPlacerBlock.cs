@@ -10,7 +10,7 @@ public class ItemPlacerBlock : MonoBehaviour
     {
         var w = rect.rect.width;
         var h = rect.rect.height;
-        var r = new Rect(rect.position.x + (w/2), rect.position.y - (h/2), w/2.2f, h/2.2f);
+        var r = new Rect(rect.position.x, rect.position.y, w/2.2f, h/2.2f);
         return r;
     }
     

@@ -11,4 +11,5 @@ public class InventoryController : MonoBehaviour
     public void AddTile(GridTile t) => _tiles.Add(t.GetCoord(), t);
 
     public static readonly UnityEvent<ItemPlacer> CheckOverlap = new();
+    public static readonly UnityEvent ClearGrid = new();
 }
